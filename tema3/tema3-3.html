@@ -3,8 +3,8 @@
   <head>
     <title>Tema 3.3</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Roi Naveiro" />
-    <script src="libs/header-attrs-2.25/header-attrs.js"></script>
+    <meta name="author" content="Santiago Mota (Material Orginal - Roi Naveiro)" />
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link rel="stylesheet" href="ds_slides.css" type="text/css" />
   </head>
   <body>
@@ -27,7 +27,7 @@ class: center, middle, inverse, title-slide
 &lt;br&gt;
 &lt;br&gt;
 .pull-left[
-### Roi Naveiro
+### Santiago Mota
 ]
 ---
 
@@ -94,7 +94,7 @@ class: center, middle, inverse
 * Datos en formato texto
 
 
-```r
+``` r
 "Esto es un string"
 ```
 
@@ -102,7 +102,7 @@ class: center, middle, inverse
 ## [1] "Esto es un string"
 ```
 
-```r
+``` r
 c("una", "dos y tres")
 ```
 
@@ -122,7 +122,7 @@ c("una", "dos y tres")
 Podemos calcular la longitud de una string usando `str_length()`
 
 
-```r
+``` r
 str_length("Hola")
 ```
 
@@ -133,7 +133,7 @@ str_length("Hola")
 Las operaciones están vectorizadas
 
 
-```r
+``` r
 str_length( c("Hola", "Adiós") )
 ```
 
@@ -149,7 +149,7 @@ str_length( c("Hola", "Adiós") )
 Combinamos strings con `str_c`
 
 
-```r
+``` r
 str_c("Ma", "drid")
 ```
 
@@ -157,7 +157,7 @@ str_c("Ma", "drid")
 ## [1] "Madrid"
 ```
 
-```r
+``` r
 str_c("Un", "dos", sep=",")
 ```
 
@@ -173,7 +173,7 @@ str_c("Un", "dos", sep=",")
 También vectorizado!
 
 
-```r
+``` r
 str_c("prefijo-", c("X", "Y", "Z"), "-sufijo")
 ```
 
@@ -184,7 +184,7 @@ str_c("prefijo-", c("X", "Y", "Z"), "-sufijo")
 Para colapsar un texto largo en una única string
 
 
-```r
+``` r
 str_c(c("En", "un", "lugar", "de", "la", "Mancha"), collapse = " ")
 ```
 
@@ -197,7 +197,7 @@ str_c(c("En", "un", "lugar", "de", "la", "Mancha"), collapse = " ")
 Para extraer partes de una string usamos `str_sub`
 
 
-```r
+``` r
 x &lt;- c("Liberty", "La Nuit")
 str_sub(x, 1, 3)
 ```
@@ -206,7 +206,7 @@ str_sub(x, 1, 3)
 ## [1] "Lib" "La "
 ```
 
-```r
+``` r
 # Con números negativos empieza desde el final
 str_sub(x, -3, -1)
 ```
@@ -219,7 +219,7 @@ str_sub(x, -3, -1)
 ## Strings: cosas útiles
 
 
-```r
+``` r
 x &lt;- c("Liberty", "La nuit")
 str_to_lower(x)
 ```
@@ -228,7 +228,7 @@ str_to_lower(x)
 ## [1] "liberty" "la nuit"
 ```
 
-```r
+``` r
 str_to_upper(x)
 ```
 
@@ -236,7 +236,7 @@ str_to_upper(x)
 ## [1] "LIBERTY" "LA NUIT"
 ```
 
-```r
+``` r
 str_to_title(x)
 ```
 
@@ -261,7 +261,7 @@ patrones
 E.g. patrón "contiene ES seguido de dos números"
 
 
-```r
+``` r
 x1 &lt;- "ES49"
 x2 &lt;- "Mi número de cuenta es ES35 30..."
 x3 &lt;- "Resido en España (ES)"
@@ -274,7 +274,7 @@ Vamos aprender a jugar con patrones muy sencillos. Primero, coincidencia
 exacta (ojo mayúsculas y minúsculas!)
 
 
-```r
+``` r
 x &lt;- c("Cats", "Uñas Chung Lee", "Capital")
 str_view(x, "Le")
 ```
@@ -291,7 +291,7 @@ str_view(x, "Le")
 Para identificar cualquier caracter usamos `.`
 
 
-```r
+``` r
 x &lt;- c("Cats", "Uñas Chung Lee", "Capital")
 str_view(x, ".a.")
 ```
@@ -307,7 +307,7 @@ str_view(x, ".a.")
 Empieza por `^` 
 
 
-```r
+``` r
 x &lt;- c("Cats", "Uñas Chung Lee", "Capital")
 str_view(x, "^C")
 ```
@@ -323,7 +323,7 @@ str_view(x, "^C")
 Termina por `$`
 
 
-```r
+``` r
 str_view(x, "l$")
 ```
 
@@ -337,7 +337,7 @@ str_view(x, "l$")
 `\b` delimita una palabra 
 
 
-```r
+``` r
 x &lt;- c("My favourite animal is the cat", "Here you can see our catalog")
 
 str_view(x, "\\bcat\\b")
@@ -356,7 +356,7 @@ str_view(x, "\\bcat\\b")
 `[abc]`:  a, b, o c.
 
 
-```r
+``` r
 x = c("B12", "Eslava", "Ocho y Medio")
 str_view(x, "\\d")
 ```
@@ -370,7 +370,7 @@ str_view(x, "\\d")
 OJO
 
 
-```r
+``` r
 writeLines("\\d")
 ```
 
@@ -384,7 +384,7 @@ Cuando queremso escribir explícitamente el símbolo \ en una string, necesitamo
 ## Strings: expresiones regulares
 
 
-```r
+``` r
 x = c("ES12", "Mi cuenta es ES46", "Resido en España (ES)")
 str_view(x, "ES\\d\\d")
 ```
@@ -400,7 +400,7 @@ str_view(x, "ES\\d\\d")
 **Ejercicio**: Detecta las autovías correctas
 
 
-```r
+``` r
 x &lt;- c("Siempre paso por la A1", "A12", "A14", "La A6 va a Galicia", "EA5", "A3", "F2")
 ```
 
@@ -412,7 +412,7 @@ x &lt;- c("Siempre paso por la A1", "A12", "A14", "La A6 va a Galicia", "EA5", "
 Con esto estamos preparados para detectar patrones
 
 
-```r
+``` r
 x = c("ES12", "Mi cuenta es ES46", "Resido en España (ES)")
 str_detect(x, "ES\\d\\d")
 ```
@@ -424,7 +424,7 @@ str_detect(x, "ES\\d\\d")
 Uso común, seleccionar los elementos que cumplen el patrón
 
 
-```r
+``` r
 words[str_detect(words, "x$")]
 ```
 
@@ -438,7 +438,7 @@ words[str_detect(words, "x$")]
 También con dataframes
 
 
-```r
+``` r
 df &lt;- tibble(
   word = words, 
   i = seq_along(word)
@@ -462,7 +462,7 @@ df %&gt;%
 
 ¿Cuántas veces ocurre el patrón?
 
-```r
+``` r
 x &lt;- c("apple", "banana", "pear")
 str_count(x, "a")
 ```
@@ -479,7 +479,7 @@ str_count(x, "a")
 Se usa mucho con mutate
 
 
-```r
+``` r
 df %&gt;% 
   mutate(
     vocales = str_count(word, "[aeiou]"),
@@ -522,7 +522,7 @@ class: center, middle, inverse
 ## Factores: creación
 
 
-```r
+``` r
 x1 &lt;- c("Dec", "Apr", "Jan", "Mar")
 ```
 
@@ -530,13 +530,13 @@ Usar una string para almacenar esta variable tiene dos problemas
 
 * Los valores son fijos y nada previene de errores
 
-```r
+``` r
 x1 &lt;- c("Dec", "Apr", "Jan", "Mer")
 ```
 
 * No ordena de manera útil
 
-```r
+``` r
 sort(x1)
 ```
 
@@ -549,7 +549,7 @@ sort(x1)
 
 Esto se arregla creando un factor
 
-```r
+``` r
 month_levels &lt;- c(
   "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -569,7 +569,7 @@ sort(y1)
 Con pipes
 
 
-```r
+``` r
 f2 &lt;- x1 %&gt;% factor(levels = month_levels) 
 f2
 ```
@@ -585,7 +585,7 @@ f2
 Trabajaremos con los datos `gss_cat`
 
 
-```r
+``` r
 glimpse(gss_cat)
 ```
 
@@ -611,7 +611,7 @@ glimpse(gss_cat)
 --
 
 
-```r
+``` r
 gss_cat %&gt;% count(race)
 ```
 
@@ -648,7 +648,7 @@ Con `fct_reorder()`. Toma tres argumentos
 Dos opciones 
 
 
-```r
+``` r
 gss_cat %&gt;%
   group_by(relig) %&gt;%
   summarise(tvhours = mean(tvhours, na.rm = TRUE)) %&gt;%  
@@ -663,7 +663,7 @@ gss_cat %&gt;%
 Tres opciones 
 
 
-```r
+``` r
 gss_cat %&gt;%
   group_by(relig) %&gt;%
   summarise(tvhours = mean(tvhours, na.rm = TRUE)) %&gt;%  
@@ -682,7 +682,7 @@ gss_cat %&gt;%
 Usamos `fct_recode()`
 
 
-```r
+``` r
 gss_cat %&gt;% count(partyid)
 ```
 
@@ -706,7 +706,7 @@ gss_cat %&gt;% count(partyid)
 ## Factores - Modificar niveles
 
 
-```r
+``` r
 gss_cat %&gt;%
   mutate(partyid = fct_recode(partyid,
     "Republican, strong"    = "Strong republican",
@@ -741,7 +741,7 @@ gss_cat %&gt;%
 A veces útil colapsar niveles
 
 
-```r
+``` r
 gss_cat %&gt;%
   mutate(partyid = fct_collapse(partyid,
     other = c("No answer", "Don't know", "Other party"),
@@ -775,7 +775,7 @@ Para trabajar con fechas y horas usamos `lubridate` que **NO** es parte tidyvers
 Descárgalo y cárgalo en R
 
 
-```r
+``` r
 library(lubridate)
 ```
 
@@ -795,36 +795,36 @@ Tres tipos
 ## Fechas y horas
 
 
-```r
+``` r
 today()
 ```
 
 ```
-## [1] "2024-04-10"
+## [1] "2024-08-30"
 ```
 
-```r
+``` r
 str(today())
 ```
 
 ```
-##  Date[1:1], format: "2024-04-10"
+##  Date[1:1], format: "2024-08-30"
 ```
 
-```r
+``` r
 now()
 ```
 
 ```
-## [1] "2024-04-10 16:52:11 CEST"
+## [1] "2024-08-30 07:24:04 CEST"
 ```
 
-```r
+``` r
 str(now())
 ```
 
 ```
-##  POSIXct[1:1], format: "2024-04-10 16:52:11"
+##  POSIXct[1:1], format: "2024-08-30 07:24:04"
 ```
 
 ---
@@ -842,7 +842,7 @@ En general proceden de strings.
 * Solo especificar orden usando “y”, “m”, y “d”
 
 
-```r
+``` r
 ymd("2017-01-31")
 ```
 
@@ -850,7 +850,7 @@ ymd("2017-01-31")
 ## [1] "2017-01-31"
 ```
 
-```r
+``` r
 ymd("17-Jan-31")
 ```
 
@@ -862,7 +862,7 @@ ymd("17-Jan-31")
 ## Fechas y horas
 
 
-```r
+``` r
 mdy("January 31st, 2017")
 ```
 
@@ -870,7 +870,7 @@ mdy("January 31st, 2017")
 ## [1] "2017-01-31"
 ```
 
-```r
+``` r
 dmy("31 of January of 2017")
 ```
 
@@ -878,7 +878,7 @@ dmy("31 of January of 2017")
 ## [1] "2017-01-31"
 ```
 
-```r
+``` r
 ymd_hms("2017-01-31 20:11:59")
 ```
 
@@ -886,7 +886,7 @@ ymd_hms("2017-01-31 20:11:59")
 ## [1] "2017-01-31 20:11:59 UTC"
 ```
 
-```r
+``` r
 mdy_hm("01/31/2017 08:01")
 ```
 
@@ -900,7 +900,7 @@ mdy_hm("01/31/2017 08:01")
 A veces nos dan las componentes individuales por separado
 
 
-```r
+``` r
 library(nycflights13)
 flights %&gt;% 
   select(year, month, day, hour, minute)
@@ -928,7 +928,7 @@ flights %&gt;%
 
 Para esto `make_datetime()`. Ojo orden de argumentos!!
 
-```r
+``` r
 flights %&gt;% 
   select(year, month, day, hour, minute) %&gt;% 
   mutate(departure = make_datetime(year, month, day, hour, minute))
@@ -956,20 +956,20 @@ flights %&gt;%
 
 Cambiar entre formatos
 
-```r
+``` r
 as_datetime(today())
 ```
 
 ```
-## [1] "2024-04-10 UTC"
+## [1] "2024-08-30 UTC"
 ```
 
-```r
+``` r
 as_date(now())
 ```
 
 ```
-## [1] "2024-04-10"
+## [1] "2024-08-30"
 ```
 
 ---
@@ -985,7 +985,7 @@ as_date(now())
 ## Fechas y horas - Componentes
 
 
-```r
+``` r
 datetime &lt;- ymd_hms("2016-07-08 12:34:56")
 
 year(datetime)
@@ -995,7 +995,7 @@ year(datetime)
 ## [1] 2016
 ```
 
-```r
+``` r
 month(datetime)
 ```
 
@@ -1003,7 +1003,7 @@ month(datetime)
 ## [1] 7
 ```
 
-```r
+``` r
 mday(datetime)
 ```
 
@@ -1011,7 +1011,7 @@ mday(datetime)
 ## [1] 8
 ```
 
-```r
+``` r
 yday(datetime)
 ```
 
@@ -1019,7 +1019,7 @@ yday(datetime)
 ## [1] 190
 ```
 
-```r
+``` r
 wday(datetime)
 ```
 
@@ -1031,7 +1031,7 @@ wday(datetime)
 ## Fechas y horas - Componentes
 
 
-```r
+``` r
 datetime &lt;- ymd_hms("2016-07-08 12:34:56")
 
 hour(datetime)
@@ -1041,7 +1041,7 @@ hour(datetime)
 ## [1] 12
 ```
 
-```r
+``` r
 minute(datetime)
 ```
 
@@ -1049,7 +1049,7 @@ minute(datetime)
 ## [1] 34
 ```
 
-```r
+``` r
 second(datetime)
 ```
 
@@ -1061,7 +1061,7 @@ second(datetime)
 ## Fechas y horas - Componentes
 
 
-```r
+``` r
 datetime &lt;- ymd_hms("2016-07-08 12:34:56")
 
 month(datetime, label = TRUE)
@@ -1072,7 +1072,7 @@ month(datetime, label = TRUE)
 ## 12 Levels: ene &lt; feb &lt; mar &lt; abr &lt; may &lt; jun &lt; jul &lt; ago &lt; sep &lt; ... &lt; dic
 ```
 
-```r
+``` r
 wday(datetime, label = TRUE, abbr = FALSE)
 ```
 
@@ -1087,7 +1087,7 @@ wday(datetime, label = TRUE, abbr = FALSE)
 Podemo modificar componentes usando las mismas funciones
 
 
-```r
+``` r
 (datetime &lt;- ymd_hms("2016-07-08 12:34:56"))
 ```
 
@@ -1095,7 +1095,7 @@ Podemo modificar componentes usando las mismas funciones
 ## [1] "2016-07-08 12:34:56 UTC"
 ```
 
-```r
+``` r
 year(datetime) &lt;- 2020
 datetime
 ```
@@ -1104,7 +1104,7 @@ datetime
 ## [1] "2020-07-08 12:34:56 UTC"
 ```
 
-```r
+``` r
 month(datetime) &lt;- 01
 datetime
 ```
@@ -1113,7 +1113,7 @@ datetime
 ## [1] "2020-01-08 12:34:56 UTC"
 ```
 
-```r
+``` r
 hour(datetime) &lt;- hour(datetime) + 1
 datetime
 ```
@@ -1128,7 +1128,7 @@ datetime
 También podemos modificar componentes con `update`
 
 
-```r
+``` r
 update(datetime, year = 2023)
 ```
 
@@ -1152,13 +1152,13 @@ Para operar con fechas, necesitaremos:
 Al restar dos fechas, obtenemos un objeto  de clase `difftime`
 
 
-```r
+``` r
 mi_edad &lt;- today() - ymd("1993 May 17")
 mi_edad
 ```
 
 ```
-## Time difference of 11286 days
+## Time difference of 11428 days
 ```
 
 Este objeto alberga tiempos en segundos, minutos, horas, días, etc. Ambiguo
@@ -1169,12 +1169,12 @@ Este objeto alberga tiempos en segundos, minutos, horas, días, etc. Ambiguo
 Alternativa, trabajar con **duraciones** (en segundos)
 
 
-```r
+``` r
 as.duration(mi_edad)
 ```
 
 ```
-## [1] "975110400s (~30.9 years)"
+## [1] "987379200s (~31.29 years)"
 ```
 
 ---
@@ -1183,7 +1183,7 @@ as.duration(mi_edad)
 Funciones úliles. Siempre en segundos!!
 
 
-```r
+``` r
 dseconds(15)
 ```
 
@@ -1191,7 +1191,7 @@ dseconds(15)
 ## [1] "15s"
 ```
 
-```r
+``` r
 dminutes(10)
 ```
 
@@ -1199,7 +1199,7 @@ dminutes(10)
 ## [1] "600s (~10 minutes)"
 ```
 
-```r
+``` r
 dhours(c(12, 24))
 ```
 
@@ -1207,7 +1207,7 @@ dhours(c(12, 24))
 ## [1] "43200s (~12 hours)" "86400s (~1 days)"
 ```
 
-```r
+``` r
 ddays(0:5)
 ```
 
@@ -1221,7 +1221,7 @@ ddays(0:5)
 Funciones úliles. Siempre en segundos!!
 
 
-```r
+``` r
 dweeks(3)
 ```
 
@@ -1229,7 +1229,7 @@ dweeks(3)
 ## [1] "1814400s (~3 weeks)"
 ```
 
-```r
+``` r
 dyears(1)
 ```
 
@@ -1242,7 +1242,7 @@ dyears(1)
 ## Fechas y horas - Operaciones con duraciones
 
 
-```r
+``` r
 dyears(1) + dweeks(12) + dhours(15)
 ```
 
@@ -1250,7 +1250,7 @@ dyears(1) + dweeks(12) + dhours(15)
 ## [1] "38869200s (~1.23 years)"
 ```
 
-```r
+``` r
 2*dweeks(12)
 ```
 
@@ -1259,22 +1259,22 @@ dyears(1) + dweeks(12) + dhours(15)
 ```
 
 
-```r
+``` r
 mañana &lt;- today() + ddays(1)
 mañana
 ```
 
 ```
-## [1] "2024-04-11"
+## [1] "2024-08-31"
 ```
 
-```r
+``` r
 año_pasado &lt;- today() - dyears(1)
 año_pasado
 ```
 
 ```
-## [1] "2023-04-10 18:00:00 UTC"
+## [1] "2023-08-30 18:00:00 UTC"
 ```
 
 ---
@@ -1283,7 +1283,7 @@ año_pasado
 Más intuitivo
 
 
-```r
+``` r
 seconds(15)
 ```
 
@@ -1291,7 +1291,7 @@ seconds(15)
 ## [1] "15S"
 ```
 
-```r
+``` r
 minutes(10)
 ```
 
@@ -1299,7 +1299,7 @@ minutes(10)
 ## [1] "10M 0S"
 ```
 
-```r
+``` r
 hours(c(12, 24))
 ```
 
@@ -1307,7 +1307,7 @@ hours(c(12, 24))
 ## [1] "12H 0M 0S" "24H 0M 0S"
 ```
 
-```r
+``` r
 days(7)
 ```
 
@@ -1321,7 +1321,7 @@ days(7)
 Más intuitivo
 
 
-```r
+``` r
 months(1:6)
 ```
 
@@ -1330,7 +1330,7 @@ months(1:6)
 ## [5] "5m 0d 0H 0M 0S" "6m 0d 0H 0M 0S"
 ```
 
-```r
+``` r
 weeks(3)
 ```
 
@@ -1338,7 +1338,7 @@ weeks(3)
 ## [1] "21d 0H 0M 0S"
 ```
 
-```r
+``` r
 years(1)
 ```
 
@@ -1352,7 +1352,7 @@ years(1)
 Operaciones con fechas
 
 
-```r
+``` r
 ymd("2017-01-01") + years(1)
 ```
 
@@ -1360,7 +1360,7 @@ ymd("2017-01-01") + years(1)
 ## [1] "2018-01-01"
 ```
 
-```r
+``` r
 ymd("2017-01-01") + months(1)
 ```
 
@@ -1368,7 +1368,7 @@ ymd("2017-01-01") + months(1)
 ## [1] "2017-02-01"
 ```
 
-```r
+``` r
 ymd("2017-01-01") + days(1)
 ```
 
@@ -1382,7 +1382,7 @@ ymd("2017-01-01") + days(1)
 ¿Qué está pasando?
 
 
-```r
+``` r
 ymd("2016-01-01") + dyears(1)
 ```
 
@@ -1390,7 +1390,7 @@ ymd("2016-01-01") + dyears(1)
 ## [1] "2016-12-31 06:00:00 UTC"
 ```
 
-```r
+``` r
 ymd("2016-01-01") + years(1)
 ```
 

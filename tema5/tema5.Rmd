@@ -1,6 +1,6 @@
 ---
 title: "Tema 5"
-author: "Roi Naveiro"
+author: "Santiago Mota (Material Orginal - Roi Naveiro)"
 date: ""
 output: 
    xaringan::moon_reader:
@@ -34,7 +34,7 @@ class: center, middle, inverse, title-slide
 <br>
 <br>
 .pull-left[
-### Roi Naveiro
+### Santiago Mota
 ]
 ---
 ## Informes

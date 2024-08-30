@@ -1,6 +1,6 @@
 ---
 title: "Análisis y Explotación de la Información"
-author: "Roi Naveiro"
+author: "Santiago Mota (Material Orginal - Roi Naveiro)"
 date: ""
 output: 
    xaringan::moon_reader:
@@ -37,7 +37,7 @@ class: center, middle, inverse, title-slide
 <br>
 <br>
 .pull-left[
-### Roi Naveiro
+### Santiago Mota
 ]
 
 
@@ -303,9 +303,9 @@ knitr::include_graphics("img/r-rstudio.png")
 
 * Análisis y Explotación de la Información. 
 
-* Profesor: Roi Naveiro
+* Profesor: Santiago Mota
 
-* Email: roi.naveiro@cunef.edu
+* Email: santiago.mota@cunef.edu
 
 * Web del curso: [https://cunef-aeinf-spring2024.github.io/](https://cunef-aeinf-spring2024.github.io/)
 

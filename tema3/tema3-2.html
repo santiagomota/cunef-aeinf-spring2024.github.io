@@ -3,8 +3,8 @@
   <head>
     <title>Tema 3.2</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Roi Naveiro" />
-    <script src="libs/header-attrs-2.17/header-attrs.js"></script>
+    <meta name="author" content="Santiago Mota (Material Orginal - Roi Naveiro)" />
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link rel="stylesheet" href="ds_slides.css" type="text/css" />
   </head>
   <body>
@@ -27,7 +27,7 @@ class: center, middle, inverse, title-slide
 &lt;br&gt;
 &lt;br&gt;
 .pull-left[
-### Roi Naveiro
+### Santiago Mota
 ]
 ---
 
@@ -84,14 +84,14 @@ class: center, middle, inverse
 * En el siguiente ejemplo presentamos los valores de cuatro variables (*country, year, population, cases*) de cuatro formas distintas
 
 
-```r
+``` r
 table1
 ```
 
 ```
 ## # A tibble: 6 × 4
 ##   country      year  cases population
-##   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
+##   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
 ## 1 Afghanistan  1999    745   19987071
 ## 2 Afghanistan  2000   2666   20595360
 ## 3 Brazil       1999  37737  172006362
@@ -107,14 +107,14 @@ table1
 * En el siguiente ejemplo presentamos los valores de cuatro variables (*country, year, population, cases*) de cuatro formas distintas
 
 
-```r
+``` r
 table2
 ```
 
 ```
 ## # A tibble: 12 × 4
 ##    country      year type            count
-##    &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;           &lt;int&gt;
+##    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
 ##  1 Afghanistan  1999 cases             745
 ##  2 Afghanistan  1999 population   19987071
 ##  3 Afghanistan  2000 cases            2666
@@ -136,14 +136,14 @@ table2
 * En el siguiente ejemplo presentamos los valores de cuatro variables (*country, year, population, cases*) de cuatro formas distintas
 
 
-```r
+``` r
 table3
 ```
 
 ```
 ## # A tibble: 6 × 3
 ##   country      year rate             
-## * &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;            
+##   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            
 ## 1 Afghanistan  1999 745/19987071     
 ## 2 Afghanistan  2000 2666/20595360    
 ## 3 Brazil       1999 37737/172006362  
@@ -159,27 +159,27 @@ table3
 * En el siguiente ejemplo presentamos los valores de cuatro variables (*country, year, population, cases*) de cuatro formas distintas
 
 
-```r
+``` r
 table4a
 ```
 
 ```
 ## # A tibble: 3 × 3
 ##   country     `1999` `2000`
-## * &lt;chr&gt;        &lt;int&gt;  &lt;int&gt;
+##   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
 ## 1 Afghanistan    745   2666
 ## 2 Brazil       37737  80488
 ## 3 China       212258 213766
 ```
 
-```r
+``` r
 table4b
 ```
 
 ```
 ## # A tibble: 3 × 3
 ##   country         `1999`     `2000`
-## * &lt;chr&gt;            &lt;int&gt;      &lt;int&gt;
+##   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;
 ## 1 Afghanistan   19987071   20595360
 ## 2 Brazil       172006362  174504898
 ## 3 China       1272915272 1280428583
@@ -203,14 +203,14 @@ table4b
 * La principal ventaja es poder utilizar las herramientas de R que, usualmente, trabajan sobre vectores de valores.
 
 
-```r
+``` r
 table1 %&gt;% mutate(rate = 10000 * cases / population)
 ```
 
 ```
 ## # A tibble: 6 × 5
 ##   country      year  cases population  rate
-##   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt; &lt;dbl&gt;
+##   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;
 ## 1 Afghanistan  1999    745   19987071 0.373
 ## 2 Afghanistan  2000   2666   20595360 1.29 
 ## 3 Brazil       1999  37737  172006362 2.19 
@@ -239,14 +239,14 @@ table1 %&gt;% mutate(rate = 10000 * cases / population)
 * Nombres de columnas son valores de variable
 
 
-```r
+``` r
 table4a
 ```
 
 ```
 ## # A tibble: 3 × 3
 ##   country     `1999` `2000`
-## * &lt;chr&gt;        &lt;int&gt;  &lt;int&gt;
+##   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
 ## 1 Afghanistan    745   2666
 ## 2 Brazil       37737  80488
 ## 3 China       212258 213766
@@ -265,7 +265,7 @@ table4a
 # `pivot_longer()`
 
 
-```r
+``` r
 table4a %&gt;% pivot_longer(c(`1999`, `2000`), 
                          names_to = "year", values_to = "cases")
 ```
@@ -273,7 +273,7 @@ table4a %&gt;% pivot_longer(c(`1999`, `2000`),
 ```
 ## # A tibble: 6 × 3
 ##   country     year   cases
-##   &lt;chr&gt;       &lt;chr&gt;  &lt;int&gt;
+##   &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt;
 ## 1 Afghanistan 1999     745
 ## 2 Afghanistan 2000    2666
 ## 3 Brazil      1999   37737
@@ -299,14 +299,14 @@ Usa `pivot_longer()` para ordenar el dataset `table4b`
 * Cada una ocupa dos filas
 
 
-```r
+``` r
 table2
 ```
 
 ```
 ## # A tibble: 12 × 4
 ##    country      year type            count
-##    &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;           &lt;int&gt;
+##    &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
 ##  1 Afghanistan  1999 cases             745
 ##  2 Afghanistan  1999 population   19987071
 ##  3 Afghanistan  2000 cases            2666
@@ -333,7 +333,7 @@ Para ordenar, necesitamos:
 # `pivot_wider()`
 
 
-```r
+``` r
 table2 %&gt;% 
   pivot_wider(names_from = type, values_from = count)
 ```
@@ -341,7 +341,7 @@ table2 %&gt;%
 ```
 ## # A tibble: 6 × 4
 ##   country      year  cases population
-##   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
+##   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
 ## 1 Afghanistan  1999    745   19987071
 ## 2 Afghanistan  2000   2666   20595360
 ## 3 Brazil       1999  37737  172006362
@@ -366,14 +366,14 @@ table2 %&gt;%
 * Se puede separar en dos columnas utilizando `separate()`
 
 
-```r
+``` r
 table3
 ```
 
 ```
 ## # A tibble: 6 × 3
 ##   country      year rate             
-## * &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;            
+##   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            
 ## 1 Afghanistan  1999 745/19987071     
 ## 2 Afghanistan  2000 2666/20595360    
 ## 3 Brazil       1999 37737/172006362  
@@ -385,14 +385,14 @@ table3
 # Separar y unir columnas
 
 
-```r
+``` r
 table3 %&gt;% separate(rate, into = c("cases", "population"))
 ```
 
 ```
 ## # A tibble: 6 × 4
 ##   country      year cases  population
-##   &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;     
+##   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     
 ## 1 Afghanistan  1999 745    19987071  
 ## 2 Afghanistan  2000 2666   20595360  
 ## 3 Brazil       1999 37737  172006362 
@@ -408,14 +408,14 @@ table3 %&gt;% separate(rate, into = c("cases", "population"))
 * Se puede especificar el caracter.
 
 
-```r
+``` r
 table3 %&gt;% separate(rate, into = c("cases", "population"), sep = "/")
 ```
 
 ```
 ## # A tibble: 6 × 4
 ##   country      year cases  population
-##   &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;     
+##   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     
 ## 1 Afghanistan  1999 745    19987071  
 ## 2 Afghanistan  2000 2666   20595360  
 ## 3 Brazil       1999 37737  172006362 
@@ -430,14 +430,14 @@ table3 %&gt;% separate(rate, into = c("cases", "population"), sep = "/")
 * Además, conviene convertir el tipo de columna, de lo contrario será de tipo string.
 
 
-```r
+``` r
 table3 %&gt;% separate(rate, into = c("cases", "population"), convert = TRUE)
 ```
 
 ```
 ## # A tibble: 6 × 4
 ##   country      year  cases population
-##   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;      &lt;int&gt;
+##   &lt;chr&gt;       &lt;dbl&gt;  &lt;int&gt;      &lt;int&gt;
 ## 1 Afghanistan  1999    745   19987071
 ## 2 Afghanistan  2000   2666   20595360
 ## 3 Brazil       1999  37737  172006362
@@ -451,7 +451,7 @@ table3 %&gt;% separate(rate, into = c("cases", "population"), convert = TRUE)
 * Se puede separar usando enteros
 
 
-```r
+``` r
 table5 &lt;- 
   table3 %&gt;% separate(year, into = c("century", "year"), sep = 2)
 ```
@@ -463,7 +463,7 @@ table5 &lt;-
 * Toma como argumentos:  nueva variable, conjunto de columnas a juntar y `sep`
 
 
-```r
+``` r
 table5 %&gt;% unite(new, century, year, sep = "")
 ```
 
@@ -553,7 +553,7 @@ Dos tipos de llaves:
 Una vez identificada una llave primaria, es útil comprobar que es correcta
 
 
-```r
+``` r
 planes %&gt;% 
   count(tailnum) %&gt;% 
   filter(n &gt; 1)
@@ -561,12 +561,12 @@ planes %&gt;%
 
 ```
 ## # A tibble: 0 × 2
-## # … with 2 variables: tailnum &lt;chr&gt;, n &lt;int&gt;
+## # ℹ 2 variables: tailnum &lt;chr&gt;, n &lt;int&gt;
 ```
 
 
 
-```r
+``` r
 weather %&gt;% 
   count(year, month, day, hour, origin) %&gt;% 
   filter(n &gt; 1)
@@ -591,13 +591,13 @@ weather %&gt;%
 Útil añadir una... **llave surrogada**
 
 
-```r
+``` r
 flights_key &lt;- flights %&gt;% mutate(key = row_number())
 ```
 
 
 
-```r
+``` r
 flights_key %&gt;% 
   count(key) %&gt;% 
   filter(n &gt; 1)
@@ -605,7 +605,7 @@ flights_key %&gt;%
 
 ```
 ## # A tibble: 0 × 2
-## # … with 2 variables: key &lt;int&gt;, n &lt;int&gt;
+## # ℹ 2 variables: key &lt;int&gt;, n &lt;int&gt;
 ```
 
 ---
@@ -634,7 +634,7 @@ variables de una tabla a otra.
 * Añade nuevas variables a la derecha!! Trabajamos con versión reducida
 
 
-```r
+``` r
 flights2 &lt;- flights %&gt;% 
   select(year:day, hour, origin, dest, tailnum, carrier) 
 flights2 %&gt;% slice(1:3)
@@ -655,7 +655,7 @@ flights2 %&gt;% slice(1:3)
 Para entender su funcionamiento, trabajamos con datos artificiales
 
 
-```r
+``` r
 x &lt;- tribble(
   ~key, ~val_x,
      1, "x1",
@@ -690,7 +690,7 @@ La salida es un nuevo data frame con llave, variable x y variable y.
 Las filas no emparejadas no aparecen!!
 
 
-```r
+``` r
 x %&gt;% 
   inner_join(y, by = "key")
 ```
@@ -726,7 +726,7 @@ Tres tipos:
 Predice la respuesta de los siguientes códigos
 
 
-```r
+``` r
 x %&gt;% 
   left_join(y, by = "key")
 
@@ -743,7 +743,7 @@ x %&gt;%
 Predice la respuesta de los siguientes códigos
 
 
-```r
+``` r
 x %&gt;% 
   left_join(y, by = "key")
 ```
@@ -757,7 +757,7 @@ x %&gt;%
 ## 3     3 x3    &lt;NA&gt;
 ```
 
-```r
+``` r
 x %&gt;% 
   right_join(y, by = "key")
 ```
@@ -777,7 +777,7 @@ x %&gt;%
 Predice la respuesta de los siguientes códigos
 
 
-```r
+``` r
 x %&gt;% 
   full_join(y, by = "key")
 ```
@@ -808,7 +808,7 @@ x %&gt;%
 Caso típico!
 
 
-```r
+``` r
 x &lt;- tribble(
   ~key, ~val_x,
      1, "x1",
@@ -839,7 +839,7 @@ left_join(x, y, by = "key")
 
 
 
-```r
+``` r
 left_join(x, y, by = "key")
 ```
 
@@ -859,7 +859,7 @@ left_join(x, y, by = "key")
 Error, llave no identifica unívocamente las observaciones
 
 
-```r
+``` r
 x &lt;- tribble(
   ~key, ~val_x,
      1, "x1",
@@ -883,7 +883,7 @@ y &lt;- tribble(
 Todas las combinaciones!
 
 
-```r
+``` r
 left_join(x, y, by = "key")
 ```
 
@@ -928,7 +928,7 @@ ambas tablas
 * ¿Qué variables se utilizarán en el siguiente código?
 
 
-```r
+``` r
 flights2 %&gt;% 
   left_join(weather)
 ```
@@ -941,7 +941,7 @@ flights2 %&gt;%
 
 
 
-```r
+``` r
 flights2 %&gt;% 
   left_join(planes, by = "tailnum")
 ```
@@ -955,7 +955,7 @@ variable `b` de la segunda.
 * ¿Qué pasa?
 
 
-```r
+``` r
 flights2 %&gt;% 
   left_join(airports, c("dest" = "faa"))
 ```
@@ -1014,7 +1014,7 @@ Dos tipos
 esté entre los 10 destinos con más observaciones.
 
 
-```r
+``` r
 top_dest &lt;- flights %&gt;% count(dest) %&gt;% arrange(desc(n)) %&gt;% 
   slice(1:10)
 ```
@@ -1030,7 +1030,7 @@ top_dest &lt;- flights %&gt;% count(dest) %&gt;% arrange(desc(n)) %&gt;%
 # `anti_join(x,y)`
 Útil para diagnosticar discordancias.
 
-```r
+``` r
 flights %&gt;%
   anti_join(planes, by = "tailnum") %&gt;%
   count(tailnum) %&gt;% arrange(desc(n))
@@ -1050,7 +1050,7 @@ flights %&gt;%
 ##  8 N534MQ    364
 ##  9 N542MQ    363
 ## 10 N531MQ    349
-## # … with 712 more rows
+## # ℹ 712 more rows
 ```
 
 ---
@@ -1074,7 +1074,7 @@ Tratan observaciones como conjuntos:
 # Set operations
 
 
-```r
+``` r
 df1 &lt;- tribble(
   ~x, ~y,
    1,  1,
@@ -1092,7 +1092,7 @@ df2 &lt;- tribble(
 # Set operations
 
 
-```r
+``` r
 intersect(df1, df2)
 ```
 
@@ -1103,7 +1103,7 @@ intersect(df1, df2)
 ## 1     1     1
 ```
 
-```r
+``` r
 union(df1, df2)
 ```
 
@@ -1116,7 +1116,7 @@ union(df1, df2)
 ## 3     1     2
 ```
 
-```r
+``` r
 setdiff(df1, df2)
 ```
 

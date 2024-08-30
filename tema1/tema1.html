@@ -3,8 +3,8 @@
   <head>
     <title>Tema 1</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Roi Naveiro" />
-    <script src="libs/header-attrs-2.25/header-attrs.js"></script>
+    <meta name="author" content="Santiago Mota (Material Orginal - Roi Naveiro)" />
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link rel="stylesheet" href="ds_slides.css" type="text/css" />
   </head>
   <body>
@@ -27,7 +27,7 @@ class: center, middle, inverse, title-slide
 &lt;br&gt;
 &lt;br&gt;
 .pull-left[
-### Roi Naveiro
+### Santiago Mota
 ]
 
 
@@ -66,7 +66,7 @@ class: center, middle, inverse
 ## Ejecutar comandos
 
 
-```r
+``` r
 123 * 65
 ```
 
@@ -82,7 +82,7 @@ En consola aparece como
 
 
 
-```r
+``` r
 1000:1020
 ```
 
@@ -94,7 +94,7 @@ En consola aparece como
 Uso como calculadora
 
 
-```r
+``` r
 (7 + 7) / 7 * 2 
 ```
 
@@ -111,7 +111,7 @@ Uso como calculadora
 * Comentarios con `#`
 
 
-```r
+``` r
 # Esto es un comentario
 # Sumo los números del 1 al 100
 sum(1:100)
@@ -134,7 +134,7 @@ sum(1:100)
 * Si queremos un valor (o conjunto de valores) de forma recurrente hay que **guardarlos en memoria**, dándole un nombre.
 
 
-```r
+``` r
 # Esto crea un objeto de R con valor pi
 a &lt;- pi
 
@@ -149,7 +149,7 @@ a + 3
 * Podemos guardar múltiples valores
 
 
-```r
+``` r
 b &lt;-1:10
 b
 ```
@@ -173,7 +173,7 @@ El nombre de un objeto no puede empezar con un número, ni tampoco incluír cier
 R sobre-escribe
 
 
-```r
+``` r
 c &lt;- 5
 c
 ```
@@ -182,7 +182,7 @@ c
 ## [1] 5
 ```
 
-```r
+``` r
 c &lt;- 20
 c
 ```
@@ -194,7 +194,7 @@ c
 La función `ls()` muestra nombres usados
 
 
-```r
+``` r
 ls()
 ```
 
@@ -209,7 +209,7 @@ ls()
 
 * Vector - Número
 
-```r
+``` r
 b &lt;- 1:10
 b + 7
 ```
@@ -220,7 +220,7 @@ b + 7
 
 * Vector - Vector (misma longitud)
 
-```r
+``` r
 b * b
 ```
 
@@ -234,7 +234,7 @@ b * b
 * Vector - Vector (diferente longitud)
 
 
-```r
+``` r
 # R repite el vector corto hasta alcanzar la longitud del largo
 # Si la longitud del corto no es múltiplo de la del largo lanza un warning
 d &lt;- 1:2
@@ -257,7 +257,7 @@ Esta función nos ayuda a combinar objetos.
 Por ejemplo, podemos crear un vector de enteros de la siguiente forma
 
 
-```r
+``` r
 a &lt;- c(1,2,3)
 a
 ```
@@ -268,7 +268,7 @@ a
 
 También podemos añadir elementos a un vector existente
 
-```r
+``` r
 a &lt;- c(a, 4,5)
 a
 ```
@@ -280,7 +280,7 @@ a
 No solo podemos crear vectores de números!
 
 
-```r
+``` r
 a &lt;- c('adiós', 'hola')
 a
 ```
@@ -299,7 +299,7 @@ class: center, middle, inverse
 
 R tiene muchas funciones predefinidas 
 
-```r
+``` r
 # Calcula la media de los números del 1 al 10
 mean(1:10)
 ```
@@ -308,7 +308,7 @@ mean(1:10)
 ## [1] 5.5
 ```
 
-```r
+``` r
 # El argumento de una función puede ser el resultado de otra función
 round(mean(1:10))
 ```
@@ -323,22 +323,22 @@ round(mean(1:10))
 Algunas funciones tienen múltiples argumentos. Cada uno tiene un nombre
 
 
-```r
+``` r
 # Muestrea un número del 1 al 10
 sample(x = 1:10, size = 1)
 ```
 
 ```
-## [1] 5
+## [1] 2
 ```
 
-```r
+``` r
 # Nombre opcional
 sample(1:10, 1)
 ```
 
 ```
-## [1] 2
+## [1] 1
 ```
 
 ---
@@ -346,7 +346,7 @@ sample(1:10, 1)
 
 La función `args()` muestra los argumentos de una función
 
-```r
+``` r
 args(sample)
 ```
 
@@ -382,7 +382,7 @@ Pregunta, ¿qué valores tiene por defecto la función `round()`?
 
 * Permiten definir operaciones de uso recurrente (no implementadas en R).
 
-```r
+``` r
 una_funcion &lt;- function(){}
 ```
 
@@ -391,7 +391,7 @@ una_funcion &lt;- function(){}
 --
 
 
-```r
+``` r
 gen2_1_100 &lt;- function(){
   nums &lt;- sample(1:100, size = 2, replace = TRUE)
   print(nums)
@@ -405,20 +405,20 @@ gen2_1_100 &lt;- function(){
 * La probamos
 
 
-```r
+``` r
 a &lt;- gen2_1_100()
 ```
 
 ```
-## [1]  4 94
+## [1] 40  6
 ```
 
-```r
+``` r
 a
 ```
 
 ```
-## [1] 98
+## [1] 46
 ```
 
 ---
@@ -427,7 +427,7 @@ a
 * Argumentos
 
 
-```r
+``` r
 # Pasamos el tamaño como argumento
 # 2 es el valor por defecto
 gen2_1_100 &lt;- function(n=2){
@@ -440,16 +440,16 @@ gen2_1_100 &lt;- function(n=2){
 * La probamos sin argumento
 
 
-```r
+``` r
 gen2_1_100()
 ```
 
 ```
-## [1] 22 35
+## [1] 13 21
 ```
 
 ```
-## [1] 57
+## [1] 34
 ```
 
 ---
@@ -457,16 +457,16 @@ gen2_1_100()
 
 * La probamos con argumento
 
-```r
+``` r
 gen2_1_100(10)
 ```
 
 ```
-##  [1] 52 23 18 69 27 52 73 94 15 91
+##  [1]  78  86  78 100  83  16  88  73  88  98
 ```
 
 ```
-## [1] 514
+## [1] 788
 ```
 
 ---
@@ -503,14 +503,14 @@ class: center, middle, inverse
 * Ejemplo, instalar `tidyverse`
 
 
-```r
+``` r
 install.packages("tidyverse")
 ```
 
 * Para usar paquetes en R hay que cargarlos
 
 
-```r
+``` r
 library("tidyverse")
 ```
 
@@ -524,7 +524,7 @@ library("tidyverse")
 * Las funciones cuentan con ayudas, que se invocan de la siguiente manera
 
 
-```r
+``` r
 ?sample
 ```
 
@@ -568,7 +568,7 @@ Estudiaremos los siguientes objetos:
 No son más que vectores de datos. Ya hemos visto cómo crearlos.
 
 
-```r
+``` r
 a = c(1,2,3)
 
 # Comprueba si es vector
@@ -579,7 +579,7 @@ is.vector(a)
 ## [1] TRUE
 ```
 
-```r
+``` r
 # Devuelve la longitud del vector
 length(a)
 ```
@@ -597,7 +597,7 @@ Cada vector sólo guarda un tipo de dato
 Los vectores tipo double almacenan números reales
 
 
-```r
+``` r
 a = c(1.7,2,3.5)
 
 # Devuelve el tipo de vector
@@ -615,7 +615,7 @@ typeof(a)
 Los vectores tipo entero almacenan números enteros
 
 
-```r
+``` r
 a = c(1L,-2L,3L)
 
 # Devuelve el tipo de vector
@@ -632,7 +632,7 @@ typeof(a)
 Los vectores tipo caracter (string) almacenan texto
 
 
-```r
+``` r
 a = c("Hola", "Adiós")
 
 # Devuelve el tipo de vector
@@ -645,7 +645,7 @@ typeof(a)
 
 OJO: ¿Qué está sucediendo?
 
-```r
+``` r
 a = c(1,2,3,"Hola")
 a
 ```
@@ -663,7 +663,7 @@ Este fenómeno se llama **coerción**. Es importante que leas sobre el mismo en
 Los vectores tipo lógico almacenan `TRUE` o `FALSE` (datos Booleanos).
 
 
-```r
+``` r
 a = c(5&gt;4, 4&gt;5)
 typeof(a)
 ```
@@ -672,7 +672,7 @@ typeof(a)
 ## [1] "logical"
 ```
 
-```r
+``` r
 a
 ```
 
@@ -702,7 +702,7 @@ a
 Son piezas de información que se pueden adjuntar a los objetos de R.
 
 
-```r
+``` r
 a = 1:10
 attributes(a)
 ```
@@ -716,7 +716,7 @@ Algunos atributos importantes: nombres y dimensión.
 ---
 ## Atributos - Nombres
 
-```r
+``` r
 a = 1:3
 # Asigno nombres al vector a
 names(a) &lt;- c("uno", "dos", "tres")
@@ -727,7 +727,7 @@ names(a)
 ## [1] "uno"  "dos"  "tres"
 ```
 
-```r
+``` r
 #Compruebo que se ha guardado el atributo
 attributes(a)
 ```
@@ -740,7 +740,7 @@ attributes(a)
 ---
 ## Atributos - Dimensión
 
-```r
+``` r
 a = 1:10
 # Asigno dimensión, esto convierte a en matriz
 
@@ -759,7 +759,7 @@ dim(a)
 Se utilizan para almacenar matrices bi-dimensionales
 
 
-```r
+``` r
 m &lt;- matrix(1:10, nrow=2)
 m
 ```
@@ -770,7 +770,7 @@ m
 ## [2,]    2    4    6    8   10
 ```
 
-```r
+``` r
 m &lt;- matrix(1:10, nrow=2, byrow=TRUE)
 m
 ```
@@ -785,7 +785,7 @@ m
 ## 3. Arrays
 Se utilizan para almacenar matrices n-dimensionales
 
-```r
+``` r
 m &lt;- array(1:12, dim = c(2,2,3))
 m
 ```
@@ -818,7 +818,7 @@ Representa el conjunto de propiedades o métodos que son comunes a todos los obj
 La función `class` describe el tipo de clase correspondiente al objeto.
 
 
-```r
+``` r
 m &lt;- array(1:12, dim = c(2,2,3))
 class(m)
 ```
@@ -830,16 +830,16 @@ class(m)
 ---
 ## 4. Fechas y Horas
 
-```r
+``` r
 hora &lt;- Sys.time()
 hora
 ```
 
 ```
-## [1] "2024-01-31 14:39:53 CET"
+## [1] "2024-08-30 07:19:37 CEST"
 ```
 
-```r
+``` r
 typeof(hora)
 ```
 
@@ -847,7 +847,7 @@ typeof(hora)
 ## [1] "double"
 ```
 
-```r
+``` r
 class(hora)
 ```
 
@@ -861,7 +861,7 @@ class(hora)
 Se utilizan para almacenar variables categóricas, con un nivel de categorías fijo.
 
 
-```r
+``` r
 fumador &lt;- factor( c("SI", "NO", "NO", "SI") )
 attributes(fumador)
 ```
@@ -876,7 +876,7 @@ attributes(fumador)
 
 
 
-```r
+``` r
 # Convertimos factor a caracter
 fumador &lt;- as.character(fumador)
 class(fumador)
@@ -892,7 +892,7 @@ class(fumador)
 Hemos visto que los vectores atómicos agrupan valores individuales (del mismo tipos).
 Las listas almacenan objetos de R.
 
-```r
+``` r
 milista &lt;- list(c("A", "B"), 1:10, Sys.time())
 milista
 ```
@@ -905,7 +905,7 @@ milista
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
 ## [[3]]
-## [1] "2024-01-31 14:39:53 CET"
+## [1] "2024-08-30 07:19:37 CEST"
 ```
 
 ---
@@ -914,7 +914,7 @@ Versión bi-dimensional de una lista. Distintas columnas del data frame puede pu
 Un dataframe se crea especificando las columnas (que son vectores atómicos)
 
 
-```r
+``` r
 df &lt;- data.frame(paciente = c("MARIANO", "IRENE", "INES"), fumador = c("SI", "NO", "SI"), edad = c(64, 32, 38))
 df
 ```
@@ -928,7 +928,7 @@ df
 ---
 ## 7. Data Frames
 
-```r
+``` r
 # Comprobamos la clase
 class(df)
 ```
@@ -937,7 +937,7 @@ class(df)
 ## [1] "data.frame"
 ```
 
-```r
+``` r
 # Resumimos la información
 str(df)
 ```
@@ -1000,7 +1000,7 @@ class: center, middle, inverse
 En un dataframe
 
 
-```r
+``` r
 # Selección con números enteros
 df[1,2]
 ```
@@ -1009,7 +1009,7 @@ df[1,2]
 ## [1] "SI"
 ```
 
-```r
+``` r
 # Más de un elemento
 df[1:2, 2:3]
 ```
@@ -1026,7 +1026,7 @@ df[1:2, 2:3]
 En un dataframe
 
 
-```r
+``` r
 # Selección con enteros negativos
 df[-c(1,2),1:3]
 ```
@@ -1036,7 +1036,7 @@ df[-c(1,2),1:3]
 ## 3     INES      SI   38
 ```
 
-```r
+``` r
 # Selección con espacios
 df[,-2]
 ```
@@ -1048,7 +1048,7 @@ df[,-2]
 ## 3     INES   38
 ```
 
-```r
+``` r
 # Selección con variables lógicas
 df[1,c(TRUE, TRUE, FALSE)]
 ```
@@ -1064,7 +1064,7 @@ df[1,c(TRUE, TRUE, FALSE)]
 En un dataframe
 
 
-```r
+``` r
 # Selección con nombres
 df[c(1,3), "fumador"]
 ```
@@ -1073,7 +1073,7 @@ df[c(1,3), "fumador"]
 ## [1] "SI" "SI"
 ```
 
-```r
+``` r
 # Selección de columnas con $
 df$paciente
 ```
@@ -1087,7 +1087,7 @@ df$paciente
 ¡Con expresiones lógicas!
 
 
-```r
+``` r
 # Seleccinar los fumadores
 df[df$fumador == "SI", ]
 ```
@@ -1098,7 +1098,7 @@ df[df$fumador == "SI", ]
 ## 3     INES      SI   38
 ```
 
-```r
+``` r
 # Seleccinar los menores de 33
 df[df$edad &lt; 33, ]
 ```
@@ -1112,7 +1112,7 @@ df[df$edad &lt; 33, ]
 ## Seleccionar valores 
 Se pueden combinar expresiones lógicas con operadores Booleanos
 
-```r
+``` r
 exp1 &lt;- 5&gt;3
 exp2 &lt;- "A" != "A"
 exp3 &lt;- 3 %in% c(1,2,3)
@@ -1125,7 +1125,7 @@ exp1 &amp; exp2
 ## [1] FALSE
 ```
 
-```r
+``` r
 # OR
 exp1 | exp2
 ```
@@ -1134,7 +1134,7 @@ exp1 | exp2
 ## [1] TRUE
 ```
 
-```r
+``` r
 # Negación
 !exp1
 ```
@@ -1147,7 +1147,7 @@ exp1 | exp2
 Se pueden combinar expresiones lógicas con operadores Booleanos
 
 
-```r
+``` r
 # Any
 any(exp1, exp2, exp3)
 ```
@@ -1156,7 +1156,7 @@ any(exp1, exp2, exp3)
 ## [1] TRUE
 ```
 
-```r
+``` r
 # All
 all(exp1, exp2, exp3)
 ```
@@ -1170,7 +1170,7 @@ all(exp1, exp2, exp3)
 Se pueden combinar expresiones lógicas con operadores Booleanos
 
 
-```r
+``` r
 # Seleccionar los fumadores mayores de 60
 df[df$fumador == "SI" &amp; df$edad &lt; 60,]
 ```
@@ -1186,7 +1186,7 @@ df[df$fumador == "SI" &amp; df$edad &lt; 60,]
 En una lista
 
 
-```r
+``` r
 milista &lt;- list(letras = c("A", "B"), numeros = 1:10, tiempo = Sys.time())
 
 milista[1]
@@ -1197,7 +1197,7 @@ milista[1]
 ## [1] "A" "B"
 ```
 
-```r
+``` r
 milista[[1]]
 ```
 
@@ -1205,7 +1205,7 @@ milista[[1]]
 ## [1] "A" "B"
 ```
 
-```r
+``` r
 milista["letras"]
 ```
 
@@ -1214,7 +1214,7 @@ milista["letras"]
 ## [1] "A" "B"
 ```
 
-```r
+``` r
 milista[["letras"]]
 ```
 
@@ -1238,7 +1238,7 @@ Pista: la ayuda ?mtcars te puede ser útil
 ## Modificar valores
 
 
-```r
+``` r
 vec &lt;- 1:10
 
 # Modificar valores con enteros
@@ -1250,7 +1250,7 @@ vec
 ##  [1]   1   2 300   4   5   6   7   8   9  10
 ```
 
-```r
+``` r
 # Modificar valores con selección
 vec[c(1,4)] &lt;- c(100, 400)
 vec
@@ -1260,7 +1260,7 @@ vec
 ##  [1] 100   2 300 400   5   6   7   8   9  10
 ```
 
-```r
+``` r
 # Modificar valores con selección
 vec[c(5:6)] &lt;- vec[c(5:6)] + 100 
 vec
@@ -1274,7 +1274,7 @@ vec
 ## Modificar valores
 
 
-```r
+``` r
 # Añadimos variable a dataframe
 df$hipertenso &lt;- c("SI", "NO", "NO")
 df
@@ -1287,7 +1287,7 @@ df
 ## 3     INES      SI   38         NO
 ```
 
-```r
+``` r
 # Eliminamos la columna
 df$hipertenso &lt;- NULL
 
@@ -1325,7 +1325,7 @@ Las condicionales y los bucles son las dos estructuras de programación más imp
 Mandan a R realizar una tarea si se cumple una condición
 
 
-```r
+``` r
 if (se cumple esto) {
   haz esto
 }
@@ -1335,7 +1335,7 @@ Los `if` reciben una expresión lógica (`TRUE` o `FALSE`).
 
 Pueden anidarse
 
-```r
+``` r
 x &lt;- 7
 if(x &lt;= 8){
   if(x&gt;=5){
@@ -1354,7 +1354,7 @@ Haz lo anterior con un único `if`.
 
 `if` se complementa con `else`
 
-```r
+``` r
 if (se cumple esto) {
   haz esto
 } else{
@@ -1365,7 +1365,7 @@ if (se cumple esto) {
 Si hay más de dos condiciones, se puede usar `else if`
 
 
-```r
+``` r
 if (se cumple esto) {
   haz esto
 } else if(si se cumple esto){
@@ -1380,7 +1380,7 @@ if (se cumple esto) {
 
 Ejemplo
 
-```r
+``` r
 x &lt;- 7
 if (x&gt;7) {
   print(x + 3)
@@ -1397,14 +1397,14 @@ if (x&gt;7) {
 La operación if-else puede realizarse en una línea con la función `ifelse`, que tiene la siguiente estructura.
 
 
-```r
+``` r
 ifelse(condicion, valor si TRUE, valor si FALSE)
 ```
 
 Por ejemplo
 
 
-```r
+``` r
 x &lt;- 4
 ifelse(x==3, "es tres", "no es tres")
 ```
@@ -1420,13 +1420,13 @@ La operación `ifelse`, a diferencia de `if`; **está vectorizada**.
 Esto quiere decir que se aplica elemento a elemento sobre vectores. Por ejemplo
 
 
-```r
+``` r
 x &lt;- sample(1:10, 5, replace=T)
 ifelse(x%%2==0, "Par", "Impar")
 ```
 
 ```
-## [1] "Par"   "Impar" "Par"   "Par"   "Impar"
+## [1] "Par"   "Par"   "Par"   "Par"   "Impar"
 ```
 
 Con `if-else` esto daría error. 
@@ -1443,7 +1443,7 @@ Estudiaremos los bucles `for` y `while`.
 
 Repite un trozo de código muchas veces, una por cada elemento en un conjunto de entrada
 
-```r
+``` r
 for(valor in conjunto){
   haz esto
 }
@@ -1455,7 +1455,7 @@ for(valor in conjunto){
 Ejemplo
 
 
-```r
+``` r
 for(valor in c("A", "B", "C")){
   print("Iterando")
 }
@@ -1467,7 +1467,7 @@ for(valor in c("A", "B", "C")){
 ## [1] "Iterando"
 ```
 
-```r
+``` r
 for(valor in c("A", "B", "C")){
   print(valor)
 }
@@ -1485,7 +1485,7 @@ for(valor in c("A", "B", "C")){
 Ejecuta un trozo de código mientras se cumple la condición de entrada
 
 
-```r
+``` r
 while(condicion){
   haz esto
 }
@@ -1493,7 +1493,7 @@ while(condicion){
 
 Ejemplo
 
-```r
+``` r
 x &lt;- 1
 while(x &lt; 8){
   print(x)

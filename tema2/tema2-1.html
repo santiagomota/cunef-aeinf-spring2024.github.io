@@ -3,8 +3,8 @@
   <head>
     <title>Tema 2.1</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Roi Naveiro" />
-    <script src="libs/header-attrs-2.25/header-attrs.js"></script>
+    <meta name="author" content="Santiago Mota (Material Orginal - Roi Naveiro)" />
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link rel="stylesheet" href="ds_slides.css" type="text/css" />
   </head>
   <body>
@@ -28,7 +28,7 @@ class: center, middle, inverse, title-slide
 
 &lt;br&gt;
 .pull-left[
-### Roi Naveiro
+### Santiago Mota
 ]
 ---
 
@@ -76,7 +76,7 @@ class: center, middle, inverse
 * Antes de empezar, debemos cargar la librería `tidyverse`
 
 
-```r
+``` r
 library(tidyverse)
 ```
 ---
@@ -85,7 +85,7 @@ library(tidyverse)
 * Podemos crear un tibble desde un dataframe
 
 
-```r
+``` r
 as_tibble(iris)
 ```
 
@@ -112,7 +112,7 @@ as_tibble(iris)
 * Podemos crear un tibble desde vectores, de manera similar a cómo hicimos con dataframes
 
 
-```r
+``` r
 dt &lt;- tibble(
   p = c("A", "B", "C", "D", "E"),
   x = 1:5,
@@ -139,7 +139,7 @@ dt
 * Podemos dar nombres complejos a las columnas de un tibble
 
 
-```r
+``` r
 dt &lt;- tibble(
   `Número de :)` = 1:5,
   ` ` = 2,
@@ -167,7 +167,7 @@ dt
 Los tibble tienen un método `print` refinado que por defecto solo muestra las 10 primeras filas
 
 
-```r
+``` r
 iris
 ```
 
@@ -333,7 +333,7 @@ iris
 Los tibble tienen un método `print` refinado que por defecto solo muestra las 10 primeras filas
 
 
-```r
+``` r
 dt &lt;- as_tibble(iris)
 ```
 
@@ -345,7 +345,7 @@ dt &lt;- as_tibble(iris)
 Esto es así para no sobrecargar la consola con los prints. ¿Y si necesitamos más de 10 filas? ¡PIPES!
 
 
-```r
+``` r
 dt %&gt;% print(n=11, width=Inf)
 ```
 
@@ -375,7 +375,7 @@ dt %&gt;% print(n=11, width=Inf)
 En RStudio, esto nos permite explorar el dataframe en una pantalla diferente.
 
 
-```r
+``` r
 dt %&gt;% View()
 ```
 
@@ -386,7 +386,7 @@ dt %&gt;% View()
 
 Para seleccionar una única variable usar `$` (por nombre) o `[[` (por nombre o posición)
 
-```r
+``` r
 # Extraer por nombre
 dt$Species[1:10]
 ```
@@ -396,7 +396,7 @@ dt$Species[1:10]
 ## Levels: setosa versicolor virginica
 ```
 
-```r
+``` r
 # Extraer por posicion
 dt[[5]][1:10]
 ```
@@ -414,7 +414,7 @@ dt[[5]][1:10]
 
 También en pipe
 
-```r
+``` r
 dt %&gt;% .$Species
 ```
 
@@ -452,7 +452,7 @@ dt %&gt;% .$Species
 
 Convertir de nuevo a data frame
 
-```r
+``` r
 class( as.data.frame(dt) )
 ```
 
@@ -498,7 +498,7 @@ GG: herramienta que permite describir de forma secuencial los componentes de un 
 Primero cargamos las librerías necesarias
 
 
-```r
+``` r
 library(tidyverse)
 library(gapminder)
 ```
@@ -508,7 +508,7 @@ Ojeamos los datos
 
 
 
-```r
+``` r
 glimpse(gapminder)
 ```
 
@@ -536,7 +536,7 @@ class: center, middle, inverse
 
 ¿Qué hace cada línea?
 
-```r
+``` r
 *gapminder67 &lt;- gapminder %&gt;% filter(year == "1967")
 ggplot(gapminder67, 
      aes(gdpPercap, lifeExp, size = pop, color = continent)) + 
@@ -554,7 +554,7 @@ ggplot(gapminder67,
 ¿Qué hace cada línea?
 
 
-```r
+``` r
 gapminder67 &lt;- gapminder %&gt;% filter(year == "1967") 
 ggplot(gapminder67,  
      aes(gdpPercap, lifeExp, size = pop, color = continent)) +  
@@ -571,7 +571,7 @@ ggplot(gapminder67,
 ¿Qué hace cada línea?
 
 
-```r
+``` r
 gapminder67 &lt;- gapminder %&gt;% filter(year == "1967") 
 *ggplot(gapminder67,
 *    aes(gdpPercap, lifeExp, size = pop, color = continent)) +
@@ -588,7 +588,7 @@ gapminder67 &lt;- gapminder %&gt;% filter(year == "1967")
 - La estructura del código de `ggplot2` es la siguiente
 
 
-```r
+``` r
 ggplot(data = [dataset], 
        mapping = aes(x = [x-variable], y = [y-variable])) +
    geom_xxx() +
@@ -605,7 +605,7 @@ Documentación [ggplot2.tidyverse.org](http://ggplot2.tidyverse.org/)
 - Alternativamente
 
 
-```r
+``` r
 ggplot(data = [dataset]) +
    geom_xxx( mapping = aes(x = [x-variable], y = [y-variable]) ) +
    other options
@@ -620,7 +620,7 @@ Ojeamos los datos
 
 
 
-```r
+``` r
 glimpse(gapminder)
 ```
 
@@ -640,7 +640,7 @@ Miramos `?gapminder`
 ---
 ## Paso a Paso
 
-```r
+``` r
 gapminder67 &lt;- gapminder %&gt;% filter(year == "1967") 
 gapminder67
 ```
@@ -666,7 +666,7 @@ gapminder67
 ---
 ## Paso a Paso
 
-```r
+``` r
 ggplot(gapminder67, aes(x = gdpPercap, y = lifeExp) ) +  
      geom_point() 
 ```
@@ -678,7 +678,7 @@ ggplot(gapminder67, aes(x = gdpPercap, y = lifeExp) ) +
 ---
 ## Paso a Paso
 
-```r
+``` r
 ggplot(gapminder67, aes(x = gdpPercap, y = lifeExp) ) +  
      geom_point() +
 *    scale_x_log10()
@@ -725,7 +725,7 @@ una variable extra
 ## Representamos el continente
 
 
-```r
+``` r
 *ggplot(gapminder67, mapping = aes(x = gdpPercap, y = lifeExp, color = continent) ) +
      geom_point() +
      scale_x_log10()
@@ -737,7 +737,7 @@ una variable extra
 ## Representamos el continente
 
 
-```r
+``` r
 *ggplot(gapminder67, mapping = aes(x = gdpPercap, y = lifeExp, color = continent,
 *                       shape = continent) ) +
      geom_point() +
@@ -750,7 +750,7 @@ una variable extra
 ## Representamos el continente y la población
 
 
-```r
+``` r
 *ggplot(gapminder67, mapping = aes(x = gdpPercap, y = lifeExp, color = continent,
 *                       shape = continent, size = pop) ) +
      geom_point() +
@@ -763,7 +763,7 @@ una variable extra
 ## Representamos el continente y la población
 
 
-```r
+``` r
 ggplot(gapminder67, mapping = aes(x = gdpPercap, y = lifeExp, color = continent, 
                         shape = continent, size = pop) ) +  
 *    geom_point(size=3) +
@@ -805,7 +805,7 @@ class: center, middle, inverse
 Múltiples gráficas en función de variable
 
 
-```r
+``` r
 ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) + 
   geom_point() +
   labs(title = "PIB per Cápita vs Esperanza de Vida",
@@ -823,7 +823,7 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
 Múltiples gráficas en función de variable
 
 
-```r
+``` r
 ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) + 
   geom_point() +
   labs(title = "PIB per Cápita vs Esperanza de Vida",
@@ -841,7 +841,7 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
 Múltiples gráficas en función de variable
 
 
-```r
+``` r
 ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) + 
   geom_point() +
   labs(title = "PIB per Cápita vs Esperanza de Vida",
@@ -859,7 +859,7 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
 Múltiples gráficas en función de variable
 
 
-```r
+``` r
 ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) + 
   geom_point() +
   labs(title = "PIB per Cápita vs Esperanza de Vida",
@@ -962,7 +962,7 @@ class: center, middle
 ## ¿Por qué visualizarlos?
 
 
-```r
+``` r
 library(Tmisc)
 ```
 
@@ -1014,7 +1014,7 @@ library(Tmisc)
 ## Resumiendo Anscombe's quartet
 
 
-```r
+``` r
 quartet %&gt;%
   group_by(set) %&gt;%
   summarise(
@@ -1039,7 +1039,7 @@ quartet %&gt;%
 ## Visualizando Anscombe's quartet
 
 
-```r
+``` r
 ggplot(quartet, aes(x = x, y = y)) +
   geom_point() +
   facet_wrap(~ set, ncol = 4)
@@ -1053,7 +1053,7 @@ ggplot(quartet, aes(x = x, y = y)) +
 Histograma - ¿Qué revela este gráfico? (Apuestas...)
 
 
-```r
+``` r
 ggplot(gapminder67, mapping = aes(x = gdpPercap)) + 
 *    geom_histogram(binwidth = 1000)
 ```
@@ -1066,7 +1066,7 @@ ggplot(gapminder67, mapping = aes(x = gdpPercap)) +
 Histograma - ¿Qué revela este gráfico? (Apuestas...)
 
 
-```r
+``` r
 ggplot(gapminder67, mapping = aes(x = gdpPercap)) + 
 *    geom_histogram(bins = 100)
 ```
@@ -1079,7 +1079,7 @@ ggplot(gapminder67, mapping = aes(x = gdpPercap)) +
 A veces útil
 
 
-```r
+``` r
 ggplot(gapminder67, mapping = aes(x = gdpPercap)) + 
 *    geom_density()
 ```
@@ -1097,7 +1097,7 @@ class: center, middle
 
 Gráfico de barras 
 
-```r
+``` r
 ggplot(gapminder67, mapping = aes(x = continent)) + 
 * geom_bar()
 ```
@@ -1114,7 +1114,7 @@ class: center, middle
 ## Visualización: datos bivariantes contínuo - categórico
 
 
-```r
+``` r
 ggplot(gapminder67, mapping = aes(x = continent, y = gdpPercap)) + 
 * geom_boxplot()
 ```
@@ -1130,7 +1130,7 @@ ggplot(gapminder67, mapping = aes(x = continent, y = gdpPercap)) +
 
 A veces queda bien añadir un ajuste
 
-```r
+``` r
 ggplot(gapminder67, aes(x = gdpPercap, y = lifeExp) ) +  
      geom_point() +
      scale_x_log10() +
@@ -1145,7 +1145,7 @@ ggplot(gapminder67, aes(x = gdpPercap, y = lifeExp) ) +
 Dataset `diamonds`
 
 
-```r
+``` r
 ggplot(data = diamonds, mapping = aes(x = clarity, fill = cut)) + 
 * geom_bar()
 ```
@@ -1158,7 +1158,7 @@ ggplot(data = diamonds, mapping = aes(x = clarity, fill = cut)) +
 Dataset `diamonds`
 
 
-```r
+``` r
 ggplot(data = diamonds, mapping = aes(x = clarity, fill = cut)) + 
 * geom_bar(position = "fill") +
   labs(y = "proportion") 
@@ -1190,7 +1190,7 @@ El argumento para especificar el estadistico de resumen es  `stat`. Puedes ver s
 ## Transformaciones estadísticas
 
 
-```r
+``` r
 ggplot(data = diamonds) + 
 * geom_bar(mapping = aes(x = cut))
 ```
@@ -1202,7 +1202,7 @@ ggplot(data = diamonds) +
 ## Transformaciones estadísticas
 
 
-```r
+``` r
 ggplot(data = diamonds) + 
 * geom_bar(mapping = aes(x = cut, y = stat(prop), group = 1) )
 ```
@@ -1217,7 +1217,7 @@ ggplot(data = diamonds) +
 Podemos crear estadísticos propios
 
 
-```r
+``` r
 ggplot(data = diamonds) + 
 * stat_summary(
 *   mapping = aes(x = cut, y = depth),
@@ -1239,7 +1239,7 @@ class: center, middle
 ## Ajustes de posición
 
 
-```r
+``` r
 ggplot(data = diamonds) + 
   geom_bar(mapping = aes(x = cut, fill = clarity) )
 ```
@@ -1253,7 +1253,7 @@ El apilamiento se realiza automáticamente con el ajuste de posición especifica
 ## Ajustes de posición - "identity"
 
 
-```r
+``` r
 ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) + 
 * geom_bar(alpha = 1/5, position = "identity")
 ```
@@ -1266,7 +1266,7 @@ ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) +
 ¿Para qué es bueno este tipo de gráfico?
 
 
-```r
+``` r
 ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) + 
 * geom_bar(position = "fill")
 ```
@@ -1279,7 +1279,7 @@ ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) +
 ¿Y este?
 
 
-```r
+``` r
 ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) + 
 * geom_bar(position = "dodge")
 ```
@@ -1300,7 +1300,7 @@ Por defecto `ggplot2` usa coordenadas Cartesianas. Las coordenadas pueden modifi
 
 .pull-left[
 
-```r
+``` r
 ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + 
   geom_boxplot()
 ```
@@ -1309,7 +1309,7 @@ ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
 ]
 .pull-right[
 
-```r
+``` r
 ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + 
   geom_boxplot() +
 * coord_flip()
@@ -1326,7 +1326,7 @@ ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
 
 .pull-left[
 
-```r
+``` r
 library(maps)
 nz &lt;- map_data("nz")
 
@@ -1338,7 +1338,7 @@ ggplot(nz, aes(long, lat, group = group)) +
 ]
 .pull-right[
 
-```r
+``` r
 ggplot(nz, aes(long, lat, group = group)) +
   geom_polygon(fill = "white", colour = "black") +
 * coord_quickmap()
@@ -1355,7 +1355,7 @@ ggplot(nz, aes(long, lat, group = group)) +
 
 .pull-left[
 
-```r
+``` r
 bar &lt;- ggplot(data = diamonds) + 
   geom_bar(
     mapping = aes(x = cut, fill = cut), 
@@ -1372,7 +1372,7 @@ bar &lt;- ggplot(data = diamonds) +
 ]
 .pull-right[
 
-```r
+``` r
 *bar + coord_polar()
 ```
 
@@ -1382,7 +1382,7 @@ bar &lt;- ggplot(data = diamonds) +
 ## Resumen
 
 
-```r
+``` r
 ggplot(data = &lt;DATA&gt;) + 
   &lt;GEOM_FUNCTION&gt;(
      mapping = aes(&lt;MAPPINGS&gt;),

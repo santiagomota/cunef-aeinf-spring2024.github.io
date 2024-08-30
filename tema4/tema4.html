@@ -3,8 +3,8 @@
   <head>
     <title>Tema 4</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Roi Naveiro" />
-    <script src="libs/header-attrs-2.17/header-attrs.js"></script>
+    <meta name="author" content="Santiago Mota (Material Orginal - Roi Naveiro)" />
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link rel="stylesheet" href="ds_slides.css" type="text/css" />
   </head>
   <body>
@@ -26,7 +26,7 @@ class: center, middle, inverse, title-slide
 &lt;br&gt;
 &lt;br&gt;
 .pull-left[
-### Roi Naveiro
+### Santiago Mota
 ]
 ---
 ## Modelización
@@ -217,7 +217,7 @@ Un modelo estadístico es un modelo matemático que incorpora un conjunto de sup
 ## ¿Qué son los modelos estadísticos?
 
 
-```r
+``` r
 ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_minimal() +
   geom_smooth(method="lm", se=FALSE, color='red')
 ```
@@ -290,7 +290,7 @@ simplificaciones de la realidad que nos sirven de algún propósito
 Discute los elementos anteriores en este ejemplo.
 
 
-```r
+``` r
 ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_minimal() +
   geom_smooth(method="lm", se=FALSE, color='red')
 ```
@@ -301,7 +301,7 @@ ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_minimal() +
 ## Ajustando modelos
 
 
-```r
+``` r
 ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_minimal()
 ```
 
@@ -324,7 +324,7 @@ ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_minimal()
 ## Ajustando modelos
 
 
-```r
+``` r
 models &lt;- tibble(
   a1 = runif(250, -20, 40),
   a2 = runif(250, -5, 5)
@@ -359,7 +359,7 @@ punto a la recta del modelo
 Para obtener el valor de los coeficientes usando R, hacemos
 
 
-```r
+``` r
 reg_mod &lt;- lm(mpg ~ wt, data = mtcars)
 coef(reg_mod)
 ```
@@ -437,7 +437,7 @@ Para esto, utilizamos `modelr` de `tidyverse`
 * Primero creamos una red de puntos de la variable predictora
 
 
-```r
+``` r
 library(modelr)
 grid &lt;- mtcars %&gt;% 
   data_grid(wt) 
@@ -459,7 +459,7 @@ grid
 ##  8  2.46
 ##  9  2.62
 ## 10  2.77
-## # … with 19 more rows
+## # ℹ 19 more rows
 ```
 
 ---
@@ -468,7 +468,7 @@ grid
 * Con el modelo, podemos añadir predicciones
 
 
-```r
+``` r
 reg_mod &lt;- lm(mpg ~ wt, data = mtcars)
 
 grid &lt;- grid %&gt;% 
@@ -491,14 +491,14 @@ grid
 ##  8  2.46  24.1
 ##  9  2.62  23.3
 ## 10  2.77  22.5
-## # … with 19 more rows
+## # ℹ 19 more rows
 ```
 
 ---
 ## Visualización de modelos
 
 
-```r
+``` r
 ggplot(mtcars, aes(wt)) +
   geom_point(aes(y = mpg)) + theme_minimal() +
   geom_line(aes(y = pred), data = grid, colour = "red", size = 1)
@@ -513,7 +513,7 @@ ggplot(mtcars, aes(wt)) +
 Añadimos residuos usando
 
 
-```r
+``` r
 reg_mod &lt;- lm(mpg ~ wt, data = mtcars)
 
 mtcars &lt;- mtcars %&gt;% add_residuals(reg_mod)
@@ -523,7 +523,7 @@ mtcars &lt;- mtcars %&gt;% add_residuals(reg_mod)
 ## Visualización de modelos
 
 
-```r
+``` r
 ggplot(mtcars, aes(wt, resid)) + 
   geom_ref_line(h = 0) +
   geom_point() 
@@ -553,7 +553,7 @@ Volvamos a la regresión anterior. La librería `broom` de tidyverse, sirve para
 ordenar los resultados de `lm`. **OJO**: no se carga automáticamente al cargar `tidyverse`.
 
 
-```r
+``` r
 library(broom)
 mod_reg &lt;- lm(mpg ~ wt, data=mtcars)
 tidy(mod_reg)
@@ -609,7 +609,7 @@ Sustituímos wt por cero
 Vamos a modelizar cómo afectan los años de experiencia en el salario de un profesor
 
 
-```r
+``` r
 library(openintro)
 data("teacher")
 set.seed(1)
@@ -625,7 +625,7 @@ teacher &lt;- teacher %&gt;%
 Vamos a modelizar cómo afectan los años de experiencia en el salario de un profesor
 
 
-```r
+``` r
 ggplot(teacher, aes(x=years, y=base)) + geom_point() + theme_minimal()
 ```
 
@@ -642,7 +642,7 @@ Determina la predicción del salario de un profesor con 15 años de experiencia.
 ## Interpretación de la Regresión Lineal
 
 
-```r
+``` r
 ggplot(teacher, aes(x=years, y=base)) + geom_point() +
   geom_smooth(method="lm", color='red', se=FALSE) + theme_minimal()
 ```
@@ -669,7 +669,7 @@ ggplot(teacher, aes(x=years, y=base)) + geom_point() +
 * Ajustamos un modelo
 
 
-```r
+``` r
 mod_base_degree &lt;- lm(base ~ degree, data=teacher)
 tidy(mod_base_degree)
 ```
@@ -699,7 +699,7 @@ sino 0.
 ## Regresión Lineal: Predictores Categóricos
 
 
-```r
+``` r
 mod_base_degree &lt;- lm(base ~ degree, data=teacher)
 tidy(mod_base_degree)
 ```
@@ -717,7 +717,7 @@ Interpreta cada coeficiente
 ## Regresión Lineal: Visualizamos las predicciones
 
 
-```r
+``` r
 mod_base_degree &lt;- lm(base ~ degree, data=teacher)
 
 grid &lt;- teacher %&gt;% 
@@ -738,7 +738,7 @@ grid
 ## Regresión Lineal: Visualizamos las predicciones
 
 
-```r
+``` r
 ggplot(teacher, aes(x=degree)) + geom_point(aes(y=base)) + theme_minimal() +
   geom_point(data = grid, aes(y = pred), colour = "red", size = 4)
 ```
@@ -780,7 +780,7 @@ y_i = \textbf{x}_i^\top\boldsymbol{\beta} + \epsilon = \beta_{0} + \beta_1 x_{i1
 En R
 
 
-```r
+``` r
 mod_reg &lt;- lm(base ~ years + degree, data = teacher)
 tidy(mod_reg)
 ```
@@ -800,7 +800,7 @@ tidy(mod_reg)
 Visualizamos las predicciones
 
 
-```r
+``` r
 grid &lt;- teacher %&gt;% 
   data_grid(years, degree) %&gt;% 
   add_predictions(mod_reg)
@@ -821,7 +821,7 @@ grid
 ##  8     3 BA     44732.
 ##  9     4 MA     48110.
 ## 10     4 BA     45550.
-## # … with 66 more rows
+## # ℹ 66 more rows
 ```
 
 ---
@@ -830,7 +830,7 @@ grid
 Visualizamos las predicciones
 
 
-```r
+``` r
 ggplot(teacher, aes(years, base, colour = degree)) + 
   geom_point() + 
   geom_line(data = grid, aes(y = pred)) + theme_minimal()
@@ -945,7 +945,7 @@ Nuestro estimador puntual para el precio promedio por huésped en la población 
 la media observada en la muestra:
 
 
-```r
+``` r
 abb &lt;- read_csv("data/asheville.csv")
 abb %&gt;% 
   summarize(mean_price = mean(ppg))
@@ -1176,7 +1176,7 @@ El objetivo del paquete infer es realizar inferencia estadística utilizando una
 gramática que se integra con el marco de diseño tidyverse.
 
 
-```r
+``` r
 library(infer)
 ```
 
@@ -1190,7 +1190,7 @@ library(infer)
 
 
 
-```r
+``` r
 set.seed(123)
 ```
 
@@ -1203,7 +1203,7 @@ En otras palabras, asegura que obtendremos la misma muestra aleatoria cada vez q
 ## Generar medias bootstrap
 
 
-```r
+``` r
 abb %&gt;%
   # specify the variable of interest
 * specify(response = ppg)
@@ -1219,7 +1219,7 @@ bootstrap).
 ## Generar medias bootstrap
 
 
-```r
+``` r
 abb %&gt;%
   # specify the variable of interest
   specify(response = ppg) %&gt;% 
@@ -1234,7 +1234,7 @@ abb %&gt;%
 ## Generar medias bootstrap
 
 
-```r
+``` r
 abb %&gt;%
   # specify the variable of interest
   specify(response = ppg) %&gt;% 
@@ -1255,12 +1255,12 @@ las medianas bootstrap.
 
 
 
-```r
+``` r
 num_reps &lt;- 100
 ```
 
 
-```r
+``` r
 # save resulting bootstrap distribution
 *boot_dist &lt;- abb %&gt;%
   # specify the variable of interest
@@ -1281,7 +1281,7 @@ num_reps &lt;- 100
 --
 
 
-```r
+``` r
 boot_dist
 ```
 
@@ -1300,7 +1300,7 @@ boot_dist
 ##  8         8  95.7
 ##  9         9  88.5
 ## 10        10  90.8
-## # … with 90 more rows
+## # ℹ 90 more rows
 ```
 
 ---
@@ -1321,7 +1321,7 @@ Un intervalo de confianza del 95% contiene el 95% central de la distribución bo
 Usando `dplyr`:
 
 
-```r
+``` r
 ci &lt;- boot_dist %&gt;%
   summarise(lower_b = quantile(stat, 0.025), 
             upper_b = quantile(stat, 0.975))
@@ -1343,7 +1343,7 @@ Utilizando `geom_vline()` para marcar los límites del intervalo de confianza
 
 
 
-```r
+``` r
 *ggplot(data = boot_dist, mapping = aes(x = stat)) +
   geom_histogram(binwidth = 5, alpha = .5) +
 * geom_vline(xintercept = ci$lower_b,
@@ -1368,7 +1368,7 @@ Utilizando `geom_vline()` para marcar los límites del intervalo de confianza
 ## Visualizar un intervalo de confianza (Opción 2)
 
 
-```r
+``` r
 *visualize(boot_dist) +
 * shade_confidence_interval(endpoints = ci)+
   labs(title = "Distribución Bootstrap de la media de precio por cliente",

@@ -3,8 +3,8 @@
   <head>
     <title>Tema 2.2</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Roi Naveiro" />
-    <script src="libs/header-attrs-2.17/header-attrs.js"></script>
+    <meta name="author" content="Santiago Mota (Material Orginal - Roi Naveiro)" />
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link rel="stylesheet" href="ds_slides.css" type="text/css" />
   </head>
   <body>
@@ -29,7 +29,7 @@ class: center, middle, inverse, title-slide
 
 &lt;br&gt;
 .pull-left[
-### Roi Naveiro
+### Santiago Mota
 ]
 ---
 
@@ -125,7 +125,7 @@ Para aprender las diferentes transformaciones que podemos hacer sobre los datos,
 
 
 
-```r
+``` r
 library(tidyverse)
 library(gapminder)
 glimpse(gapminder)
@@ -164,7 +164,7 @@ Observar únicamente la variable referente a esperanza de vida (`lifeExp`)
 
 .pull-left[
 
-```r
+``` r
 gapminder %&gt;%
 * select(lifeExp)
 ```
@@ -183,7 +183,7 @@ gapminder %&gt;%
 ##  8    40.8
 ##  9    41.7
 ## 10    41.8
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 ]
 --
@@ -198,7 +198,7 @@ gapminder %&gt;%
 
 .pull-left[
 
-```r
+``` r
 gapminder %&gt;%
 * select(lifeExp, country)
 ```
@@ -217,13 +217,13 @@ gapminder %&gt;%
 ##  8    40.8 Afghanistan
 ##  9    41.7 Afghanistan
 ## 10    41.8 Afghanistan
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 ]
 --
 .pull-right[ 
 
-```r
+``` r
 gapminder %&gt;%
 * select(lifeExp:gdpPercap)
 ```
@@ -242,13 +242,13 @@ gapminder %&gt;%
 ##  8    40.8 13867957      852.
 ##  9    41.7 16317921      649.
 ## 10    41.8 22227415      635.
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 ]
 
 **NOTA**: los verbos no modifican el data frames. Para guardar el output como un nuevo dataframe
 
-```r
+``` r
 esperanza_vida &lt;- gapminder %&gt;%
   select(lifeExp) 
 ```
@@ -258,7 +258,7 @@ esperanza_vida &lt;- gapminder %&gt;%
 
 .pull-left[
 
-```r
+``` r
 gapminder %&gt;%
 * select(-lifeExp, -pop, -year )
 ```
@@ -277,13 +277,13 @@ gapminder %&gt;%
 ##  8 Afghanistan Asia           852.
 ##  9 Afghanistan Asia           649.
 ## 10 Afghanistan Asia           635.
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 ]
 --
 .pull-right[ 
 
-```r
+``` r
 gapminder %&gt;%
 * select(-(continent:gdpPercap) )
 ```
@@ -302,7 +302,7 @@ gapminder %&gt;%
 ##  8 Afghanistan
 ##  9 Afghanistan
 ## 10 Afghanistan
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 ]
 
@@ -326,7 +326,7 @@ Las siguientes funciones son útiles
 
 
 
-```r
+``` r
 gapminder %&gt;%
 * select( starts_with("co"))
 ```
@@ -345,7 +345,7 @@ gapminder %&gt;%
 ##  8 Afghanistan Asia     
 ##  9 Afghanistan Asia     
 ## 10 Afghanistan Asia     
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 
 
@@ -355,7 +355,7 @@ gapminder %&gt;%
  `everything()` es útil para colocar ciertas variables al inicio del data frame
 
 
-```r
+``` r
 gapminder %&gt;%
 * select( year, everything() )
 ```
@@ -374,7 +374,7 @@ gapminder %&gt;%
 ##  8  1987 Afghanistan Asia         40.8 13867957      852.
 ##  9  1992 Afghanistan Asia         41.7 16317921      649.
 ## 10  1997 Afghanistan Asia         41.8 22227415      635.
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 
 ---
@@ -388,7 +388,7 @@ class: center, middle, inverse
 Para renombrar variables, utilizar `rename`
 
 
-```r
+``` r
 gapminder %&gt;%
 * rename( pais = country )
 ```
@@ -407,7 +407,7 @@ gapminder %&gt;%
 ##  8 Afghanistan Asia       1987    40.8 13867957      852.
 ##  9 Afghanistan Asia       1992    41.7 16317921      649.
 ## 10 Afghanistan Asia       1997    41.8 22227415      635.
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 
 ---
@@ -421,7 +421,7 @@ class: center, middle, inverse
 Seleccionemos país, año y esperanza de vida y ordenemos en orden **creciente** de esperanzada de vida
 
 
-```r
+``` r
 gapminder %&gt;%
 * select( country, year, lifeExp ) %&gt;%
 * arrange(lifeExp)
@@ -441,7 +441,7 @@ gapminder %&gt;%
 ##  8 Mozambique    1952    31.3
 ##  9 Sierra Leone  1957    31.6
 ## 10 Burkina Faso  1952    32.0
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 ---
 ## Ordenar datos
@@ -449,7 +449,7 @@ gapminder %&gt;%
 Seleccionemos país, año y esperanza de vida y ordenemos en orden **decreciente** de esperanzada de vida
 
 
-```r
+``` r
 gapminder %&gt;%
 * select( country, year, lifeExp ) %&gt;%
 * arrange(desc(lifeExp))
@@ -469,7 +469,7 @@ gapminder %&gt;%
 ##  8 Spain             2007    80.9
 ##  9 Sweden            2007    80.9
 ## 10 Israel            2007    80.7
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 
 ---
@@ -478,7 +478,7 @@ gapminder %&gt;%
 ¿Qué sucede?
 
 
-```r
+``` r
 gapminder %&gt;%
 * select( country, year, lifeExp ) %&gt;%
 * arrange(desc(country))
@@ -498,7 +498,7 @@ gapminder %&gt;%
 ##  8 Zimbabwe  1987    62.4
 ##  9 Zimbabwe  1992    60.4
 ## 10 Zimbabwe  1997    46.8
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 
 ---
@@ -529,7 +529,7 @@ class: center, middle, inverse
 1. Empezamos con todo el dataset
 
 
-```r
+``` r
 *gapminder %&gt;%
   select( country, year, lifeExp ) %&gt;% 
   arrange(desc(country))  
@@ -545,7 +545,7 @@ class: center, middle, inverse
 2. Este entra en `select`, que selecciona country, year, lifeExp
 
 
-```r
+``` r
 gapminder %&gt;% 
 * select( country, year, lifeExp ) %&gt;%
   arrange(desc(country)) 
@@ -562,7 +562,7 @@ gapminder %&gt;%
 3. Por útimo, el resultado del select pasa a `arrange`
 
 
-```r
+``` r
 gapminder %&gt;% 
   select( country, year, lifeExp ) %&gt;% 
 * arrange(desc(country))
@@ -574,7 +574,7 @@ gapminder %&gt;%
 
 Pasando la respuesta a `ggplot2`
 
-```r
+``` r
 gapminder %&gt;%
   filter(year == 2007) %&gt;%
 * ggplot(., aes(x = lifeExp, fill = continent)) +
@@ -592,7 +592,7 @@ class: center, middle, inverse
 ## Seleccionar filas
 
 
-```r
+``` r
 gapminder %&gt;%
   select(country) %&gt;%
 * slice(1:3)
@@ -626,7 +626,7 @@ class: center, middle, inverse
 * Los argumentos reflejan las condiciones del filtrado
 
 
-```r
+``` r
 gapminder %&gt;%
 * filter(country == "Spain", lifeExp &gt; 80)
 ```
@@ -662,7 +662,7 @@ Operador    | Definición                   || Operador     | Definición
 ¿Qué está pasando?
 
 
-```r
+``` r
 sqrt(2)^2 == 2
 ```
 
@@ -672,7 +672,7 @@ sqrt(2)^2 == 2
 
 --
 
-```r
+``` r
 near(sqrt(2)^2, 2)
 ```
 
@@ -696,7 +696,7 @@ Por defecto, los múltiples argumentos de `filter` se combinan con el operador ?
 Ejemplo: seleccionar países de América que en el 2007 tuvieran esperanza de vida superior a 75 o un PIB per cápita inferior a 6000
 
 
-```r
+``` r
 gapminder %&gt;%
 *   filter(year == 2007, continent == "Americas", (lifeExp &gt; 77 | gdpPercap &lt; 4000) )
 ```
@@ -731,7 +731,7 @@ class: center, middle, inverse
 * Casi todas las operaciones con NA devuelven NA
 
 
-```r
+``` r
 NA == 2
 ```
 
@@ -739,7 +739,7 @@ NA == 2
 ## [1] NA
 ```
 
-```r
+``` r
 NA + 3
 ```
 
@@ -747,7 +747,7 @@ NA + 3
 ## [1] NA
 ```
 
-```r
+``` r
 NA == NA
 ```
 
@@ -763,7 +763,7 @@ NA == NA
 * Es fácil preservarlos
 
 
-```r
+``` r
 df &lt;- tibble(x = c(1, NA, 3))
 filter(df, x &gt; 1)
 ```
@@ -775,7 +775,7 @@ filter(df, x &gt; 1)
 ## 1     3
 ```
 
-```r
+``` r
 filter(df, is.na(x) | x &gt; 1)
 ```
 
@@ -799,7 +799,7 @@ class: center, middle, inverse
 Filtrar valores únicos de filas
 
 
-```r
+``` r
 gapminder %&gt;% 
 * distinct(continent, year) %&gt;%
   arrange(continent, desc(year) )
@@ -819,7 +819,7 @@ gapminder %&gt;%
 ##  8 Africa     1972
 ##  9 Africa     1967
 ## 10 Africa     1962
-## # … with 50 more rows
+## # ℹ 50 more rows
 ```
 
 ---
@@ -832,7 +832,7 @@ class: center, middle, inverse
 
 .pull-left[
 
-```r
+``` r
 gapminder %&gt;% 
   filter(year == 1967) %&gt;% 
 * count(continent)
@@ -852,7 +852,7 @@ gapminder %&gt;%
 
 .pull-right[
 
-```r
+``` r
 gapminder %&gt;% 
   filter(year == 1967) %&gt;% 
 * count(continent, sort=TRUE)
@@ -875,7 +875,7 @@ gapminder %&gt;%
 ## Contar y ordenar
 
 
-```r
+``` r
 gapminder %&gt;% 
   filter(year == 1967) %&gt;% 
   count(continent) %&gt;% 
@@ -897,7 +897,7 @@ gapminder %&gt;%
 ## Contar más de una variable
 
 
-```r
+``` r
 gapminder %&gt;% 
 * count(continent, year)
 ```
@@ -916,7 +916,7 @@ gapminder %&gt;%
 ##  8 Africa     1987    52
 ##  9 Africa     1992    52
 ## 10 Africa     1997    52
-## # … with 50 more rows
+## # ℹ 50 more rows
 ```
 
 ---
@@ -929,7 +929,7 @@ class: center, middle, inverse
 ## Añadir nuevas columnas
 
 
-```r
+``` r
 gapminder %&gt;%
   mutate(gdp = gdpPercap * pop) %&gt;%
   filter(year == 2007) %&gt;%
@@ -938,20 +938,19 @@ gapminder %&gt;%
 
 ```
 ## # A tibble: 142 × 7
-##    country      conti…¹  year lifeExp    pop gdpPe…²     gdp
-##    &lt;fct&gt;        &lt;fct&gt;   &lt;int&gt;   &lt;dbl&gt;  &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-##  1 United Stat… Americ…  2007    78.2 3.01e8  42952. 1.29e13
-##  2 China        Asia     2007    73.0 1.32e9   4959. 6.54e12
-##  3 Japan        Asia     2007    82.6 1.27e8  31656. 4.04e12
-##  4 India        Asia     2007    64.7 1.11e9   2452. 2.72e12
-##  5 Germany      Europe   2007    79.4 8.24e7  32170. 2.65e12
-##  6 United King… Europe   2007    79.4 6.08e7  33203. 2.02e12
-##  7 France       Europe   2007    80.7 6.11e7  30470. 1.86e12
-##  8 Brazil       Americ…  2007    72.4 1.90e8   9066. 1.72e12
-##  9 Italy        Europe   2007    80.5 5.81e7  28570. 1.66e12
-## 10 Mexico       Americ…  2007    76.2 1.09e8  11978. 1.30e12
-## # … with 132 more rows, and abbreviated variable names
-## #   ¹​continent, ²​gdpPercap
+##    country  continent  year lifeExp    pop gdpPercap     gdp
+##    &lt;fct&gt;    &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;  &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+##  1 United … Americas   2007    78.2 3.01e8    42952. 1.29e13
+##  2 China    Asia       2007    73.0 1.32e9     4959. 6.54e12
+##  3 Japan    Asia       2007    82.6 1.27e8    31656. 4.04e12
+##  4 India    Asia       2007    64.7 1.11e9     2452. 2.72e12
+##  5 Germany  Europe     2007    79.4 8.24e7    32170. 2.65e12
+##  6 United … Europe     2007    79.4 6.08e7    33203. 2.02e12
+##  7 France   Europe     2007    80.7 6.11e7    30470. 1.86e12
+##  8 Brazil   Americas   2007    72.4 1.90e8     9066. 1.72e12
+##  9 Italy    Europe     2007    80.5 5.81e7    28570. 1.66e12
+## 10 Mexico   Americas   2007    76.2 1.09e8    11978. 1.30e12
+## # ℹ 132 more rows
 ```
 
 **NOTA 1**: se puede definir más de una variable
@@ -980,7 +979,7 @@ Múltiples funciones útiles para añadir columnas
 ## Ejemplos
 
 
-```r
+``` r
 x = c(1,3,2,7,6)
 min_rank(x)
 ```
@@ -989,7 +988,7 @@ min_rank(x)
 ## [1] 1 3 2 5 4
 ```
 
-```r
+``` r
 33 %% 10
 ```
 
@@ -997,7 +996,7 @@ min_rank(x)
 ## [1] 3
 ```
 
-```r
+``` r
 cumsum(x)
 ```
 
@@ -1012,7 +1011,7 @@ Calcula la proporción de países en cada continente, que en el año 1967 tenía
 --
 
 
-```r
+``` r
 gapminder %&gt;%
   mutate(lifeExpDecade = lifeExp - lifeExp%%10) %&gt;%
   filter(year == 1967) %&gt;%
@@ -1052,7 +1051,7 @@ Calcula la proporción de países en cada continente, que en el año 1967 tenía
 --
 
 
-```r
+``` r
 gapminder %&gt;%
   mutate(lifeExpDecade = case_when(lifeExp &gt;= 20 &amp; lifeExp&lt; 30 ~ '20',
           lifeExp &gt;= 30 &amp; lifeExp&lt; 40 ~ '30',
@@ -1104,7 +1103,7 @@ class: center, middle, inverse
 ## Creación de estadísticos de resumen
 
 
-```r
+``` r
 gapminder %&gt;%
   filter(year == 1967) %&gt;%
   summarise(mean_gdpPerCapita = mean(gdpPercap))
@@ -1156,7 +1155,7 @@ class: center, middle, inverse
 Esto permite obtener estadísticos de resumen para diferentes grupos
 
 
-```r
+``` r
 gapminder %&gt;%
   filter(year == 1967) %&gt;%
   group_by(continent) %&gt;%
@@ -1179,7 +1178,7 @@ gapminder %&gt;%
 ## Agrupaciones
 
 
-```r
+``` r
 gapminder %&gt;%
   filter(year == 1967) %&gt;%
   group_by(continent) %&gt;%
@@ -1206,7 +1205,7 @@ gapminder %&gt;%
 ## Agrupaciones por varias variables
 
 
-```r
+``` r
 gapminder %&gt;%
   group_by(continent, year) %&gt;%
   summarise(

@@ -3,8 +3,8 @@
   <head>
     <title>Tema 2.3</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Roi Naveiro" />
-    <script src="libs/header-attrs-2.25/header-attrs.js"></script>
+    <meta name="author" content="Santiago Mota (Material Orginal - Roi Naveiro)" />
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link rel="stylesheet" href="ds_slides.css" type="text/css" />
   </head>
   <body>
@@ -29,7 +29,7 @@ class: center, middle, inverse, title-slide
 
 &lt;br&gt;
 .pull-left[
-### Roi Naveiro
+### Santiago Mota
 ]
 ---
 
@@ -106,7 +106,7 @@ El patrón de variación da información interesante...
 Recordemos cómo visualizar la distribución de una **variable categórica**
 
 
-```r
+``` r
 library(ggplot2)
 # Representamos número de marchas en datos mtcars
 ggplot(data=mtcars, aes(x=gear)) + 
@@ -125,7 +125,7 @@ La altura de las barras muestran el número de observaciones.
 --
 
 
-```r
+``` r
 library(tidyverse)
 mtcars %&gt;% group_by(gear)  %&gt;% summarise(n())
 ```
@@ -144,7 +144,7 @@ mtcars %&gt;% group_by(gear)  %&gt;% summarise(n())
 
 También habíamos visto cómo visualizar la distribución de variables contínuas
 
-```r
+``` r
 ggplot(data=iris, aes(x=Petal.Length)) + 
   geom_histogram(bins = 20) + 
   labs(x = "Longitud del Pétalo (cm)")
@@ -176,7 +176,7 @@ ggplot(data=iris, aes(x=Petal.Length)) +
 ## Ejemplo: longitud de pétalo
 
 
-```r
+``` r
 ggplot(data=iris, aes(x=Petal.Length)) + 
   geom_histogram() + 
   labs(x = "Longitud del Pétalo (cm)")
@@ -214,7 +214,7 @@ Los *clusters* de valores similares sugieren que existen subgrupos en los datos.
 ## Variación: variable contínua
 
 
-```r
+``` r
 ggplot(data=iris, aes(x=Petal.Length, fill=Species)) + 
   geom_histogram(bins = 20) + 
   labs(x = "Longitud del Pétalo (cm)")
@@ -227,7 +227,7 @@ ggplot(data=iris, aes(x=Petal.Length, fill=Species)) +
 ## Variación: variable contínua
 
 
-```r
+``` r
 ggplot(data=iris, aes(x=Petal.Length, color=Species)) + 
   geom_freqpoly() + 
   labs(x = "Longitud del Pétalo (cm)")
@@ -251,7 +251,7 @@ ggplot(data=iris, aes(x=Petal.Length, color=Species)) +
 Estudiemos la distribución de la anchura de los diamantes en el dataset `diamonds` (más información en `?diamonds`)
 
 
-```r
+``` r
 ggplot(diamonds, aes(x=y)) +
   geom_histogram(binwidth = 0.5)
 ```
@@ -264,7 +264,7 @@ ggplot(diamonds, aes(x=y)) +
 Aparentemente nada raro, pero...
 
 
-```r
+``` r
 ggplot(diamonds, aes(x=y)) +
   geom_histogram(binwidth = 0.5) + 
   coord_cartesian( ylim = c(0,50) )
@@ -281,7 +281,7 @@ Vamos a extraerlos con `filter`
 --
 
 
-```r
+``` r
 diamonds %&gt;%
   filter(y &lt; 3 | y &gt; 20) 
 ```
@@ -330,7 +330,7 @@ Ante valores atípicos que se quieran eliminar, dos opciones:
 - Eliminar fila entera (mucha pérdida de información)
 
 
-```r
+``` r
 diamonds2 &lt;- diamonds %&gt;%
   filter(y&gt;=3 &amp; y&lt;=20)
 ```
@@ -338,7 +338,7 @@ diamonds2 &lt;- diamonds %&gt;%
 - Reemplazar valores atípicos con `NA`
 
 
-```r
+``` r
 diamonds2 &lt;- diamonds %&gt;%
   mutate(y = ifelse(y&lt;3 | y&gt;20, NA, y))
 ```
@@ -350,13 +350,14 @@ diamonds2 &lt;- diamonds %&gt;%
 
 Los valores ausentes se indican con un warning
 
-```r
+``` r
 ggplot(data=diamonds2, mapping = aes(x=x, y=y))+
   geom_point()
 ```
 
 ```
-## Warning: Removed 9 rows containing missing values (`geom_point()`).
+## Warning: Removed 9 rows containing missing values or values outside the scale range
+## (`geom_point()`).
 ```
 
 &lt;img src="tema2-3_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
@@ -366,7 +367,7 @@ ggplot(data=diamonds2, mapping = aes(x=x, y=y))+
 
 Puede eliminarse con `na.rm = TRUE`
 
-```r
+``` r
 ggplot(data=diamonds2, mapping = aes(x=x, y=y))+
   geom_point(na.rm = T)
 ```
@@ -397,7 +398,7 @@ class: center, middle, inverse
 ## Covariación: Categórica - Contínua
 
 
-```r
+``` r
 ggplot(data=diamonds, aes(x=price, color=cut)) + 
   geom_freqpoly()
 ```
@@ -410,7 +411,7 @@ ggplot(data=diamonds, aes(x=price, color=cut)) +
 
 `..density..` pinta densidad en eje y, que es la cuenta estandarizada para que el área de cada polígono sea 1
 
-```r
+``` r
 ggplot(data=diamonds, aes(x=price, y=..density.., color=cut)) + 
   geom_freqpoly()
 ```
@@ -425,7 +426,7 @@ ggplot(data=diamonds, aes(x=price, y=..density.., color=cut)) +
 --
 
 
-```r
+``` r
 ggplot(data = mpg, aes(x = class, y = hwy)) + 
   geom_boxplot()
 ```
@@ -439,7 +440,7 @@ ggplot(data = mpg, aes(x = class, y = hwy)) +
 A veces, conviene reordenar...
 
 
-```r
+``` r
 *ggplot(data = mpg, aes(x = reorder(class, hwy, FUN = median), y = hwy)) +
   geom_boxplot()
 ```
@@ -453,7 +454,7 @@ A veces, conviene reordenar...
 Habíamos visto diagramas de barras. Otra forma:
 
 
-```r
+``` r
 ggplot(data = diamonds, aes(x = cut, y = color)) + 
 * geom_count()
 ```
@@ -467,7 +468,7 @@ ggplot(data = diamonds, aes(x = cut, y = color)) +
 --
 
 
-```r
+``` r
 diamonds %&gt;%
   group_by(color, cut) %&gt;%
   summarise(n = n())
@@ -497,7 +498,7 @@ diamonds %&gt;%
 También sirve
 
 
-```r
+``` r
 diamonds %&gt;%
   count(color, cut) 
 ```
@@ -525,7 +526,7 @@ diamonds %&gt;%
 Con esto
 
 
-```r
+``` r
 diamonds %&gt;%
   count(color, cut) %&gt;%
   ggplot(aes(x = color, y = cut, fill = n))+ 
@@ -547,7 +548,7 @@ diamonds %&gt;%
 ## Covariación: Contínua - Contínua
 
 
-```r
+``` r
 ggplot(data=diamonds, aes(x = carat, y = price)) + 
 * geom_point(alpha = 0.01)
 ```
@@ -560,7 +561,7 @@ ggplot(data=diamonds, aes(x = carat, y = price)) +
 Mejor
 
 
-```r
+``` r
 ggplot(data=diamonds, aes(x = carat, y = price)) + 
 * geom_bin2d()
 ```
@@ -574,7 +575,7 @@ ggplot(data=diamonds, aes(x = carat, y = price)) +
 Mejor
 
 
-```r
+``` r
 # install.packages("hexbin")
 ggplot(data=diamonds, aes(x = carat, y = price)) + 
 * geom_hex()
@@ -588,7 +589,7 @@ ggplot(data=diamonds, aes(x = carat, y = price)) +
 Otra opción
 
 
-```r
+``` r
 ggplot(data=diamonds, aes(x = carat, y = price, )) + 
 * geom_boxplot(aes(group = cut_width(carat, 0.1)) )
 ```
@@ -602,7 +603,7 @@ ggplot(data=diamonds, aes(x = carat, y = price, )) +
 Otra opción (mismo número de puntos por cada bin)
 
 
-```r
+``` r
 ggplot(data=diamonds, aes(x = carat, y = price, )) + 
 * geom_boxplot(aes(group = cut_number(carat, 20)) )
 ```

@@ -3,8 +3,8 @@
   <head>
     <title>Tema 3.1</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Roi Naveiro" />
-    <script src="libs/header-attrs-2.17/header-attrs.js"></script>
+    <meta name="author" content="Santiago Mota (Material Orginal - Roi Naveiro)" />
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link rel="stylesheet" href="ds_slides.css" type="text/css" />
   </head>
   <body>
@@ -27,7 +27,7 @@ class: center, middle, inverse, title-slide
 &lt;br&gt;
 &lt;br&gt;
 .pull-left[
-### Roi Naveiro
+### Santiago Mota
 ]
 ---
 
@@ -79,7 +79,7 @@ class: center, middle, inverse
 * De nuevo, para esta parte, necesitaremos cargar `tidyverse`
 
 
-```r
+``` r
 library(tidyverse)
 ```
 
@@ -103,13 +103,13 @@ class: center, middle, inverse
 * Los comandos esenciales son `getwd()` y `setwd()`
 
 
-```r
+``` r
 # Devuelve el directorio de trabajo
 getwd()
 ```
 
 
-```r
+``` r
 # Cambia el directorio de trabajo
 setwd()
 
@@ -140,7 +140,7 @@ Vamos a ver cómo crear una carpeta `data` desde R (si esta no existe) y descarg
 1. Descarga los datos sobre los indicadores de calidad de vino tinto [https://archive.ics.uci.edu/ml/datasets/Wine+Quality](https://archive.ics.uci.edu/ml/datasets/Wine+Quality).
 
 
-```r
+``` r
 data_url &lt;- "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"
 download.file(data_url, destfile = "data/red_qualities.csv")
 list.files("./data")
@@ -155,7 +155,7 @@ class: center, middle, inverse
 ## `read.table()`
 
 
-```r
+``` r
 # Así leemos datos con read.table
 # OJO: el separador es ;
 red_wine_data &lt;- read.table("data/red_qualities.csv", header = T, sep = ';')
@@ -202,7 +202,7 @@ Algunos parámetros importantes
 Esto require la librería `openxlsx`
 
 
-```r
+``` r
 library(openxlsx)
 red_wine_data &lt;- read.xlsx("data/red_qualities.xlsx", 
                            sheet = 1)
@@ -231,7 +231,7 @@ head(red_wine_data)
 ---
 ## Leer JSON
 
-```r
+``` r
 library(jsonlite)
 
 # Leer JSON
@@ -256,7 +256,7 @@ head(iris_df)
 ---
 ## Leer JSON
 
-```r
+``` r
 # La función prettify nos imprime el JSON de forma limpia
 prettify(iris_JSON)
 ```
@@ -1328,7 +1328,7 @@ class: center, middle, inverse
 Ahora veremos cómo leer datos con el paquete `readr` que es parte de `tidyverse`
 
 
-```r
+``` r
 library(tidyverse)
 ```
 
@@ -1359,36 +1359,36 @@ Las funciones de `readr` se encargan de transfromar ficheros planos en *tibbles*
 ## Lectura de datos
 
 
-```r
+``` r
 red_wine_data &lt;- read_csv2("data/red_qualities.csv")
 red_wine_data
 ```
 
 ```
 ## # A tibble: 1,599 × 12
-##    fixed…¹ volat…² citri…³ resid…⁴ chlor…⁵ free …⁶ total…⁷ density    pH sulph…⁸
-##      &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  
-##  1      74 0.7     0            19 0.076        11      34 0.9978    351 0.56   
-##  2      78 0.88    0            26 0.098        25      67 0.9968     32 0.68   
-##  3      78 0.76    0.04         23 0.092        15      54 0.997     326 0.65   
-##  4     112 0.28    0.56         19 0.075        17      60 0.998     316 0.58   
-##  5      74 0.7     0            19 0.076        11      34 0.9978    351 0.56   
-##  6      74 0.66    0            18 0.075        13      40 0.9978    351 0.56   
-##  7      79 0.6     0.06         16 0.069        15      59 0.9964     33 0.46   
-##  8      73 0.65    0            12 0.065        15      21 0.9946    339 0.47   
-##  9      78 0.58    0.02          2 0.073         9      18 0.9968    336 0.57   
-## 10      75 0.5     0.36         61 0.071        17     102 0.9978    335 0.8    
-## # … with 1,589 more rows, 2 more variables: alcohol &lt;dbl&gt;, quality &lt;dbl&gt;, and
-## #   abbreviated variable names ¹​`fixed acidity`, ²​`volatile acidity`,
-## #   ³​`citric acid`, ⁴​`residual sugar`, ⁵​chlorides, ⁶​`free sulfur dioxide`,
-## #   ⁷​`total sulfur dioxide`, ⁸​sulphates
+##    `fixed acidity` `volatile acidity` `citric acid` `residual sugar` chlorides
+##              &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;                    &lt;dbl&gt; &lt;chr&gt;    
+##  1              74 0.7                0                           19 0.076    
+##  2              78 0.88               0                           26 0.098    
+##  3              78 0.76               0.04                        23 0.092    
+##  4             112 0.28               0.56                        19 0.075    
+##  5              74 0.7                0                           19 0.076    
+##  6              74 0.66               0                           18 0.075    
+##  7              79 0.6                0.06                        16 0.069    
+##  8              73 0.65               0                           12 0.065    
+##  9              78 0.58               0.02                         2 0.073    
+## 10              75 0.5                0.36                        61 0.071    
+## # ℹ 1,589 more rows
+## # ℹ 7 more variables: `free sulfur dioxide` &lt;dbl&gt;,
+## #   `total sulfur dioxide` &lt;dbl&gt;, density &lt;chr&gt;, pH &lt;dbl&gt;, sulphates &lt;chr&gt;,
+## #   alcohol &lt;dbl&gt;, quality &lt;dbl&gt;
 ```
 ---
 ## Lectura de datos
 
 También podemos pasarle un csv escrito a mano
 
-```r
+``` r
 df &lt;- read_csv("a,b,c
                1,2,3
                4,5,6")
@@ -1408,7 +1408,7 @@ df
 
 También podemos pasarle un csv escrito a mano
 
-```r
+``` r
 # Así prevenimos la lectura de una línea 
 df &lt;- read_csv("Línea de metadatos
                a,b,c
@@ -1430,7 +1430,7 @@ df
 
 También podemos pasarle un csv escrito a mano
 
-```r
+``` r
 # Así prevenimos la lectura de comentarios
 df &lt;- read_csv("# Línea de metadatos
                a,b,c
@@ -1454,7 +1454,7 @@ df
 
 Si las columnas no tienen nombre
 
-```r
+``` r
 df &lt;- read_csv("a,b,c
                1,2,3
                4,5,6", col_names=FALSE)
@@ -1476,7 +1476,7 @@ df
 Si queremos nombrar las columnas
 
 
-```r
+``` r
 df &lt;- read_csv("a,b,c
                1,2,3
                4,5,6", col_names=c("p", "q", "r"))
@@ -1498,7 +1498,7 @@ df
 Dar nombres en formato apropiado
 
 
-```r
+``` r
 df &lt;- read_csv("Nombre Apellido, Es Fumador, EDAD_PACIENTE
                Juan Montero, SI, 35
                Maria Chacón, NO, 64")
@@ -1519,7 +1519,7 @@ df %&gt;% janitor::clean_names()
 Podemos indicar que caracteres se refieren a un valor ausente
 
 
-```r
+``` r
 df &lt;- read_csv("a,b,c
                1,nan,3
                4,5,nan", na = "nan")
@@ -1550,7 +1550,7 @@ Para entender mejor cómo hace esto debemos entender las funciones `parse*()`
 Estas convierten un vector de caracteres en un vector de datos especializado
 
 
-```r
+``` r
 str(parse_logical(c("T", "F", "F")))
 ```
 
@@ -1558,7 +1558,7 @@ str(parse_logical(c("T", "F", "F")))
 ##  logi [1:3] TRUE FALSE FALSE
 ```
 
-```r
+``` r
 str(parse_integer(c("1", "4")))
 ```
 
@@ -1566,7 +1566,7 @@ str(parse_integer(c("1", "4")))
 ##  int [1:2] 1 4
 ```
 
-```r
+``` r
 str(parse_date(c("2022-01-04")))
 ```
 
@@ -1582,7 +1582,7 @@ el primer argumento es el vector a parsear y `na` permite indicar que caracteres
 serán tratados como valores ausentes
 
 
-```r
+``` r
 parse_integer(c("1", "4", "."), na=".")
 ```
 
@@ -1595,7 +1595,7 @@ parse_integer(c("1", "4", "."), na=".")
 
 Si hay problemas, sale un mensaje warning
 
-```r
+``` r
 parse_integer(c("1", "4", "c"))
 ```
 
@@ -1642,7 +1642,7 @@ Tres problemas
 1. Los números se escriben de manera diferente en distintas partes del mundo (1.45 vs 1,45)
 
 
-```r
+``` r
 parse_double("1,45", locale = locale(decimal_mark = ","))
 ```
 
@@ -1656,7 +1656,7 @@ parse_double("1,45", locale = locale(decimal_mark = ","))
 2. A veces los números vienen con símbolos (100%)
 
 
-```r
+``` r
 parse_number("100$")
 ```
 
@@ -1664,7 +1664,7 @@ parse_number("100$")
 ## [1] 100
 ```
 
-```r
+``` r
 parse_number("30%")
 ```
 
@@ -1672,7 +1672,7 @@ parse_number("30%")
 ## [1] 30
 ```
 
-```r
+``` r
 parse_number("Me costó 100 €")
 ```
 
@@ -1686,7 +1686,7 @@ parse_number("Me costó 100 €")
 3. Caracteres de agrupamiento (1.000.000)
 
 
-```r
+``` r
 parse_number("%100,330")
 ```
 
@@ -1694,7 +1694,7 @@ parse_number("%100,330")
 ## [1] 100330
 ```
 
-```r
+``` r
 parse_number("100.330€$", locale = locale(grouping_mark = "."))
 ```
 
@@ -1708,7 +1708,7 @@ parse_number("100.330€$", locale = locale(grouping_mark = "."))
 Hay que dar a `parse_factor` un vector de posibles niveles
 
 
-```r
+``` r
 parse_factor(c("hombre", "mujer", "mujer", "otro", "portugues"), levels=c("hombre", "mujer", "otro"))
 ```
 
@@ -1728,7 +1728,7 @@ parse_factor(c("hombre", "mujer", "mujer", "otro", "portugues"), levels=c("hombr
 
 `parse_datetime()` para fecha con hora. Espera, en este orden, año, mes, dia, hora, minuto y segundo
 
-```r
+``` r
 parse_datetime("2022-01-01T1015")
 ```
 
@@ -1738,7 +1738,7 @@ parse_datetime("2022-01-01T1015")
 
 `parse_date()` para fecha. Espera, en este orden, año, mes, dia, separados por `-` o `/`
 
-```r
+``` r
 parse_date("2022/01/01")
 ```
 
@@ -1751,7 +1751,7 @@ parse_date("2022/01/01")
 
 `parse_time()` para hora. Espera, en este orden, hora, minuto y segundo separados por `:` y am pm opcionales
 
-```r
+``` r
 parse_time("10:15 am")
 ```
 
@@ -1762,7 +1762,7 @@ parse_time("10:15 am")
 También se puede especificar el formato
 
 
-```r
+``` r
 parse_date("01/04/22", "%d/%m/%y")
 ```
 
@@ -1835,7 +1835,7 @@ Intentemos entender
 Para esto, `readr` lee las primeras 1000 filas y cada columna y usa una heurística para adivinar el tipo.
 
 
-```r
+``` r
 guess_parser("2022-01-01")
 ```
 
@@ -1843,7 +1843,7 @@ guess_parser("2022-01-01")
 ## [1] "date"
 ```
 
-```r
+``` r
 str(parse_guess("2022-01-01"))
 ```
 
@@ -1867,7 +1867,7 @@ Es recomendable, cuando se pueda, especificar el tipo de columnas
 ## Ejemplo
 
 
-```r
+``` r
 read_csv("data/df-na.csv")
 ```
 
@@ -1890,7 +1890,7 @@ read_csv("data/df-na.csv")
 ## Ejemplo
 
 
-```r
+``` r
 read_csv("data/df-na.csv", col_types = list(col_double(), col_character(), 
                                             col_character()))
 ```
@@ -1929,7 +1929,7 @@ Tres funciones principales
 El uso
 
 
-```r
+``` r
 write_csv(df, "df.csv")
 ```
 
@@ -1946,7 +1946,7 @@ Estas guardan ficheros en formato binario RDS
 # Escritura de datos
 
 
-```r
+``` r
 write_rds(iris, "data/iris.RDS")
 iris_tibble = read_rds("data/iris.RDS")
 iris_tibble
