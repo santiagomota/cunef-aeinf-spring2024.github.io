@@ -137,7 +137,7 @@ Todo lo demás
 
 La base de datos `mtcars` de R contiene información extraída de la *1974 Motor Trend US magazine* acerca de 10 aspectos de diseño de rendimiento de 32 vehículos. La variable `am` se refiere a la transmisión (0 = automática, 1 = manual)
 
-```{r,fig.align='center',out.extra='angle=90', echo=FALSE}
+```{r, fig.align='center', out.extra='angle=90', echo=FALSE}
 
 library(dplyr)
 library(explore)
@@ -198,7 +198,7 @@ knitr::include_graphics("img/pollution.png")
 knitr::include_graphics("img/soy.svg")
 ```
 
-[Fuente](https://www.r-bloggers.com/2020/11/time-series-demand-forecasting/)
+[Fuente](https://www.business-science.io/code-tools/2020/11/25/commodities-demand-forecasting.html)
 
 ---
 ## Análisis Causal
@@ -303,7 +303,7 @@ knitr::include_graphics("img/r-rstudio.png")
 
 * Análisis y Explotación de la Información. 
 
-* Profesor: Santiago Mota
+* Profesor: [Santiago Mota](https://www.linkedin.com/in/santiagomota/)
 
 * Email: santiago.mota@cunef.edu
 
